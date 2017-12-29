@@ -1,0 +1,71 @@
+.card {
+  border: 1px outset #ffffc9;
+  border-radius: 10px;
+  width: 300px;
+  margin: auto;
+  -webkit-box-shadow: 7px 7px 5px 0px rgba(0, 0, 0, 0.49);
+  -moz-box-shadow: 7px 7px 5px 0px rgba(0, 0, 0, 0.49);
+  box-shadow: 7px 7px 5px 0px rgba(0, 0, 0, 0.49);
+  background: #121212;
+  img {
+    display: block;
+    margin: 20px auto;
+    border-radius: 2px;
+    border: solid 1px #444;
+  }
+  p {
+    span {
+      margin: 0 10px;
+    }
+  }
+}
+
+.card-content {
+  padding: 10px;
+  background: #222;
+  margin: 15px 16px;
+  border-radius: 10px;
+}
+
+.card-name {
+  background: #494949;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.displayCards {
+  display: flex;
+  justify-content: center;
+  margin-top: 1vh;
+  max-width: 1600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.editPerson {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5vh;
+}
+
+.noResults {
+  color: lightgrey;
+  text-align: center;
+  margin-top: 20vh;
+}
+
+.noResults button {
+  margin-top: 5vh;
+}
+
+.selectPlanet {
+  color: black;
+  margin: 15px auto;
+}
+.favoriteHide {
+  display: none;
+}
+
+
+
