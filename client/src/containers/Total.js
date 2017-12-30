@@ -15,6 +15,9 @@ class Total extends Component {
 
   render () {
     const {main: {people, planets}, paginate: {subData1, subData2, page}, search: {term, data, planetData}} = this.props
+    if (people.length === 0 || planets.length === 0) {
+      return <div className="loading">Loading...</div>
+    }
     if (term !== '') {
       return <Main people={page !== 1 ? subData1 : data.slice(0, 5)}
                    planets={page !== 1 ? subData2 : planetData}/>
