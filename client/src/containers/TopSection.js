@@ -7,24 +7,36 @@ import star from '../images/star.svg'
 import wars from '../images/wars.svg'
 import SearchBar from './SearchBar'
 
-const TopSection = ({main: {people, planets, favorite}, paginate: {page}, showFavorites}) => (
-  <div className='content'>
-    <div className='logo'>
-      <img src={star} alt="star-logo"/>
-      <img src={wars} alt="wars-logo"/>
-      <div className="favoriteCount">
-        <div>{favorite}</div>
+const TopSection = ({main: {people, planets, favorite, hideButton}, paginate: {page}, showFavorites}) => {
+  const homeButtonStyle = hideButton ? 'pagHide' : 'homeButton'
+  return (
+    <div>
+      <div className='content'>
+        <div className='logo'>
+          <img src={star} alt="star-logo"/>
+          <img src={wars} alt="wars-logo"/>
+          <div className="favoriteCount">
+            <div>{favorite}</div>
+          </div>
+          <Link to="/favorites">
+            <button className="btn btn-default"
+                    onClick={() => showFavorites(people, planets, page)}>
+              Show Favorites
+            </button>
+          </Link>
+        </div>
+        <SearchBar/>
       </div>
-      <Link to="/favorites">
-        <button className="btn btn-default"
-                onClick={() => showFavorites(people, planets, page)}>
-          Show Favorites
-        </button>
-      </Link>
+      <div>
+        <div className={homeButtonStyle}>
+          <Link to="/home">
+            <button className="btn btn-primary">Home</button>
+          </Link>
+        </div>
+      </div>
     </div>
-    <SearchBar/>
-  </div>
-)
+  )
+}
 
 const mapStateToProps = ({main, paginate, search}) => ({main, paginate, search})
 const mapDispatchToProps = dispatch => (bindActionCreators({showFavorites}, dispatch))

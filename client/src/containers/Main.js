@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router-dom'
-import * as actions from '../actions/index'
+import {paginateFunc} from '../actions/index'
 import Card from './Card'
 import PagBar from './PagBar'
 
@@ -34,12 +34,11 @@ class Main extends Component {
       )
     }
     const {people, planets, paginate: {subData1, subData2, page}} = this.props
-    console.log(people)
     return (
       <div>
         <Card people={page !== 1 ? subData1 : people.slice(0, 5)}
               planets={page !== 1 ? subData2 : planets}
-              remove={page!==1}/>
+        />
         <PagBar handlePageChange={this.handlePageChange}/>
       </div>
     )
@@ -48,9 +47,6 @@ class Main extends Component {
 
 const mapStateToProps = ({main, paginate, search}) => ({main, paginate, search})
 
-const mapDispatchToProps = dispatch => {
-  const {paginateFunc} = actions
-  return bindActionCreators({paginateFunc}, dispatch)
-}
+const mapDispatchToProps = dispatch => (bindActionCreators({paginateFunc}, dispatch))
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main))

@@ -52,8 +52,8 @@ class Card extends Component {
   }
 
   showEdit = person => {
-    const {showEdit, hidePagBar, main: {people}} = this.props
-    showEdit(true, people, person)
+    const {showEdit, hidePagBar, main: {people, planets}} = this.props
+    showEdit(people, person, planets)
     hidePagBar(true)
   }
 
@@ -64,10 +64,10 @@ class Card extends Component {
   onClick = (p) => {
     const {main: {people, favorite}, paginate: {page}, removeFavorite, remove, removeFavorited} = this.props
     if(this.props.history.location.pathname === '/favorites') {
-      removeFavorited(people, p)
-     return removeFavorite(p, favorite, people, page, remove)
+      removeFavorited(people, p, page)
+     return removeFavorite(p, favorite, people)
     }
-   return removeFavorite(p, favorite, people, page, remove)
+   return removeFavorite(p, favorite, people)
   }
 
   renderRemoveButton = p => {
@@ -79,11 +79,11 @@ class Card extends Component {
   }
 
   render () {
-    const {people, planets, main: {favorite}, search: {hide}} = this.props
+    const {people, planets, main: {favorite}, search: {hide, term}} = this.props
     if(people.length === 0 || planets.length === 0) {
       return <div className="loading"><h2>Loading....</h2></div>
     }
-    if (hide) {
+    if (hide && term !== '') {
       return <NoResults/>
     }
     return (
@@ -106,7 +106,7 @@ class Card extends Component {
                 </p>
                 <div className="editPerson">
                   <Link to="/edit">
-                    <button className="btn btn-default">Edit</button>
+                    <button className="btn btn-default" onClick={() => this.showEdit(person)}>Edit</button>
                   </Link>
                   <button className="btn btn-success" onClick={() => this.addFavorite(person, favorite, planets)}>Favorite
                   </button>

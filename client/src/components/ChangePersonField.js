@@ -1,10 +1,11 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
 import ChangeHomeWorld from './ChangeHomeWorld'
-
-export default ({handleSubmit, name, newPersonName, onChange1,
+import { Link } from 'react-router-dom'
+export default ({
+                  handleSubmit, name, newPersonName, onChange1,
                   newPersonImage, onChange2, newPersonBirthday, url,
-                  onChange3, people, planets, selectedPlanet, goHome }) => {
+                  onChange3, people, planets, selectedPlanet, pag
+                }) => {
   return (
     <div className="displayCards">
       <div className="card">
@@ -46,7 +47,7 @@ export default ({handleSubmit, name, newPersonName, onChange1,
             <div className="editPerson">
               <button className="btn btn-primary" type="submit">Save</button>
               <Link to="/main">
-                <button className="btn btn-danger">Cancel</button>
+                <button className="btn btn-danger" onClick={() => pag()}>Cancel</button>
               </Link>
             </div>
           </form>

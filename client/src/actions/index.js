@@ -66,10 +66,10 @@ export const hidePagBar = boolean => {
   }
 }
 
-export const showEdit = (boolean, people, person) => (
+export const showEdit = (people, person, planets) => (
   {
     type: types.SHOW_EDIT,
-    payload: {boolean, people, person}
+    payload: {people, person, planets}
   }
 )
 
@@ -80,18 +80,19 @@ export const addFavorite = (person, favorite, planets) => (
   }
 )
 
-export const removeFavorite = (person, favorite, people, page, show) => (
+export const removeFavorite = (person, favorite, people, show) => (
   {
     type: types.REMOVE_FAVORITE,
-    payload: {person, favorite, people, page, show}
+    payload: {person, favorite, people, show}
   }
 )
-export const removeFavorited = (people, person) => {
+export const removeFavorited = (people, person, page) => {
   return {
     type: types.REMOVE,
-    payload: {people, person}
+    payload: {people, person, page}
   }
 }
+
 export const showFavorites = (people, planets, page) => {
   return {
     type: types.SHOW_FAVORITES,

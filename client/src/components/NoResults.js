@@ -1,10 +1,11 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-export default () => (
+import { withRouter } from 'react-router-dom'
+const NoResults = ({history}) => (
   <div className="noResults">
     <h1>No Results Found</h1>
-    <Link to="/">
-      <button className="btn btn-danger">Home</button>
-    </Link>
+    <button className="btn btn-danger"
+      onClick={() => history.push('/main')}>Home</button>
   </div>
 )
+
+export default withRouter(NoResults)

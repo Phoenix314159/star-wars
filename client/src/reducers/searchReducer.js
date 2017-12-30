@@ -36,8 +36,6 @@ export default (state = {}, action) => {
       const {payload: {data}} = action
       return {...state, totalItems: data.length, term: '', hide: false}
     }
-    case types.HIDE_PAGBAR:
-      return {...state, hide: true}
     default:
       return state
   }
