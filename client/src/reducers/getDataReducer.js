@@ -21,19 +21,17 @@ export default (state = {}, action) => {
       let {payload: {person, favorite, people}} = action
       person.isFavorite = false
       favorite -= 1
-      if(favorite === 0) {
-        return {...state, favorite, people}
-      }
-      return {...state, favorite, person}
+      people = people.filter(a => (a.isFavorite !== false))
+      return {...state, favorite, people}
     }
     case types.UPDATE_PERSON: {
       const {payload: {data}} = action
       return {...state, people: data, totalItems: data.length}
     }
     case types.SHOW_FAVORITES: {
-      let {payload: {people}} = action
+      let {payload: {people, planets}} = action
       people = findFavorites(people)
-      return {...state, people, totalItems: people.length}
+      return {...state, people, planets, totalItems: people.length}
     }
     default:
       return state

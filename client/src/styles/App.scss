@@ -30,7 +30,7 @@
   top: 29%;
 }
 
-.pagBar {
+.pagContainer {
   display: flex;
   justify-content: center;
   margin-top: 8vh;
@@ -55,4 +55,15 @@
 
 .pagHide {
   display: none;
+}
+
+.noFavorites {
+  display: flex;
+  justify-content: center;
+  h2 {
+    text-align: center;
+  }
+  button {
+    margin-top: 4vh;
+  }
 }

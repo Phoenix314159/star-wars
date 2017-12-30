@@ -1,13 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { Link } from 'react-router-dom'
 import * as actions from '../actions/index'
 import '../styles/Card.scss'
-import ChangePersonField from '../components/ChangePersonField'
-// const images = require.context('../images', true)
-
-// console.log(images())
-
 
 class Card extends Component {
 
@@ -65,51 +61,31 @@ class Card extends Component {
     this.props.addFavorite(person, favorite)
   }
 
-  onClick (person) {
-    const {main: {people, planets, favorite}, paginate: {page}, removeFavorite, showFavorites, reset} = this.props
-    const url = '/api/get_people_data'
-    removeFavorite(person, favorite, people, url)
-    showFavorites(people, page, planets)
-    reset(favorite, url)
+  onClick (p) {
+    const {main: {people, favorite}, paginate: {page}, removeFavorite} = this.props
+    removeFavorite(p, favorite, people, page)
   }
 
-  renderRemoveButton = person => {
-    const {isFavorite} = person
+  renderRemoveButton = p => {
+    const {isFavorite} = p
     return (
       <button className={isFavorite ? 'btn btn-danger' : 'favoriteHide'}
-              onClick={() => this.onClick(person)}>X</button>
+              onClick={() => this.onClick(p)}>X</button>
     )
   }
 
   render () {
-    const {people, planets, goHome, main: {favorite}, edit: {editCard}, search: {hide}} = this.props
-    if (editCard) {
-      const {edit: {name, image}} = this.props
-      console.log(image)
-      return (
-        <ChangePersonField
-          name={name}
-          people={people}
-          url={image}
-          planets={planets}
-          handleSubmit={this.handleSubmit}
-          selectedPlanet={this.selectedPlanet}
-          onChange1={e => this.changeInfo1(e.target.value)}
-          onChange2={e => this.changeInfo2(e.target.value)}
-          onChange3={e => this.changeInfo3(e.target.value)}
-          goHome={goHome}
-        />
-      )
-    }
+    const {people, planets, main: {favorite}, search: {hide}} = this.props
     if (hide) {
       return (
         <div className="noResults">
           <h1>No Results Found</h1>
-          <button className="btn btn-danger" onClick={() => goHome()}>Home</button>
+          <Link to="/">
+            <button className="btn btn-danger">Home</button>
+          </Link>
         </div>
       )
     }
-
     return (
       <div className="displayCards">
         {people.map((person, i) => {
@@ -129,8 +105,10 @@ class Card extends Component {
                   {this.getHomeWorldById(homeworld)}
                 </p>
                 <div className="editPerson">
-                  <button className="btn btn-default" onClick={() => this.showEdit(person)}>Edit</button>
-                  <button className="btn btn-success" onClick={event => this.addFavorite(person, favorite)}>Favorite
+                  <Link to="/edit">
+                    <button className="btn btn-default">Edit</button>
+                  </Link>
+                  <button className="btn btn-success" onClick={() => this.addFavorite(person, favorite, planets)}>Favorite
                   </button>
                   {this.renderRemoveButton(person)}
                 </div>

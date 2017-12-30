@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './containers/App';
+import Total from './containers/Total';
 import './styles/index.scss';
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
@@ -11,5 +11,5 @@ const store = createStore(reducers, initialState, applyMiddleware(thunk))
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <Total />
   </Provider>, document.getElementById('root'))

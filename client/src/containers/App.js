@@ -4,14 +4,9 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as actions from '../actions/index'
 import '../styles/App.scss'
-import Main from './Main'
+import Row from './Row'
 
 class App extends Component {
-
-  handlePageChange = page => {
-    const {paginateFunc, main: {people, planets}, search: {data, term}} = this.props
-    return term !== '' ? paginateFunc(page, data, planets) : paginateFunc(page, people, planets)
-  }
 
   async componentDidMount () {
     this.props.getPeopleData('/api/get_people_data')
@@ -19,28 +14,15 @@ class App extends Component {
   }
 
   render () {
-    const {main: {people, planets}, paginate: {subData1, subData2, page}, search: {term, data, planetData}} = this.props
-    if (term !== '') {
-      return <Main people={page !== 1 ? subData1 : data.slice(0, 5)}
-                   planets={page !== 1 ? subData2 : planetData}
-                   handlePageChange={this.handlePageChange}
-                   totalPeople = {people}
-             />
-    }
-    return <Main people={page !== 1 ? subData1 : people.slice(0, 5)}
-                 planets={page !== 1 ? subData2 : planets}
-                 handlePageChange={this.handlePageChange}
-                 totalPeople = {people}
-            />
+    return <Row/>
   }
 }
-const mapStateToProps = ({main, paginate, search}) => ({main, paginate, search})
 
 const mapDispatchToProps = dispatch => {
-  const {getPeopleData, getPlanetData, paginateFunc} = actions
-  return bindActionCreators({getPeopleData, getPlanetData, paginateFunc}, dispatch)
+  const {getPeopleData, getPlanetData} = actions
+  return bindActionCreators({getPeopleData, getPlanetData}, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(null, mapDispatchToProps)(App)
 
 

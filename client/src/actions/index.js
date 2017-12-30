@@ -2,7 +2,7 @@ import types from './types'
 import axios from 'axios'
 
 export const getPeopleData = url => async dispatch => {
-  const {data} = await axios.get(url)
+  const {data: {data}} = await axios.get(url)
   return dispatch({
     type: types.GET_PEOPLE_DATA,
     payload: {data}
@@ -10,7 +10,7 @@ export const getPeopleData = url => async dispatch => {
 }
 
 export const getPlanetData = url => async dispatch => {
-  const {data} = await axios.get(url)
+  const {data: {data}} = await axios.get(url)
   return dispatch({
     type: types.GET_PLANETS_DATA,
     payload: {data}
@@ -19,7 +19,7 @@ export const getPlanetData = url => async dispatch => {
 
 export const updatePerson = (newName, newImage, newBirthday,
                              newPlanet, id, url, page, planetData, term) => async dispatch => {
-  if(!newName || !newImage || !newBirthday) {
+  if (!newName || !newImage || !newBirthday) {
     return null
   }
   else {
@@ -73,29 +73,29 @@ export const showEdit = (boolean, people, person) => (
   }
 )
 
-export const addFavorite = (person, favorite) => (
+export const addFavorite = (person, favorite, planets) => (
   {
     type: types.ADD_FAVORITE,
-    payload: {person, favorite}
+    payload: {person, favorite, planets}
   }
 )
 
-export const removeFavorite = (person, favorite, people) => async dispatch => {
-  return dispatch({
+export const removeFavorite = (person, favorite, people, page) => (
+  {
     type: types.REMOVE_FAVORITE,
-    payload: {person, favorite, people}
-  })
-}
+    payload: {person, favorite, people, page}
+  }
+)
 
-export const showFavorites = (people, page, planets) => {
+export const showFavorites = (people, planets, page) => {
   return {
     type: types.SHOW_FAVORITES,
-    payload: {people, page, planets}
+    payload: {people, planets, page}
   }
 }
 
-export const reset = (favorite, url) => async dispatch => {
-  if(favorite === 1) {
+export const reset = (people, favorite, url) => async dispatch => {
+  if (people.length === 0) {
     const {data} = await axios.get(url)
     return dispatch({
       type: types.GET_PEOPLE_DATA,

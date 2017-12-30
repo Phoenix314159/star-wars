@@ -4,55 +4,21 @@ import { bindActionCreators } from 'redux'
 import * as actions from '../actions/index'
 import Card from './Card'
 import PagBar from './PagBar'
-import SearchBar from './SearchBar'
-import star from '../images/star.svg'
-import wars from '../images/wars.svg'
 
 class Main extends Component {
 
-  goHome = () => {
-    const {hidePagBar, peopleSearch, showEdit, paginate: {page},
-      main: {people, planets}, search: {term}} = this.props
-    hidePagBar(false)
-    showEdit(false)
-    peopleSearch(people, planets, term, page)
+  handlePageChange = page => {
+    const {paginateFunc, main: {people, planets}, search: {data, term}} = this.props
+    return term !== '' ? paginateFunc(page, data, planets) : paginateFunc(page, people, planets)
   }
 
-  showFavorites = () => {
-    const {main: {people, planets}, paginate: {page}, showFavorites} = this.props
-    showFavorites(people, page, planets)
-  }
-
-  renderTop = () => {
-    const {main: {people, favorite}, paginate: {subData1}, goHome} = this.props
-    if (people.length === 0 && !subData1) return <div>Loading...</div>
-    return (
-      <div className='content'>
-        <div className='logo'>
-          <img src={star} alt="star-logo"/>
-          <img src={wars} alt="wars-logo"/>
-          <div className="favoriteCount">
-            <div>{favorite}</div>
-          </div>
-          <button className="btn btn-default"
-                  onClick={() => this.showFavorites()}>Show Favorites</button>
-        </div>
-        <SearchBar goHome={goHome}/>
-      </div>
-    )
-  }
   render () {
-    const {people, planets, handlePageChange} = this.props
+    const {people, planets} = this.props
     return (
       <div>
-        {this.renderTop()}
         <Card people={people}
-              planets={planets}
-              goHome={this.goHome}
-        />
-        <div className="pagBar">
-          <PagBar handlePageChange={handlePageChange}/>
-        </div>
+              planets={planets}/>
+        <PagBar handlePageChange={this.handlePageChange}/>
       </div>
     )
   }
@@ -61,8 +27,8 @@ class Main extends Component {
 const mapStateToProps = ({main, paginate, search}) => ({main, paginate, search})
 
 const mapDispatchToProps = dispatch => {
-  const {peopleSearch, hidePagBar, showEdit, showFavorites} = actions
-  return bindActionCreators({peopleSearch, hidePagBar, showEdit, showFavorites}, dispatch)
+  const {paginateFunc} = actions
+  return bindActionCreators({paginateFunc}, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main)
