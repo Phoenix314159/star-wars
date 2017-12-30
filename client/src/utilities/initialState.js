@@ -13,6 +13,7 @@ export default {
     term: '',
     size: 5,
     totalItems: 82,
-    hide: false
+    hide: false,
+    hidePageBar: false
   }
 }

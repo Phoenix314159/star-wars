@@ -27,12 +27,10 @@ const TopSection = ({main: {people, planets, favorite, hideButton}, paginate: {p
         </div>
         <SearchBar/>
       </div>
-      <div>
-        <div className={homeButtonStyle}>
-          <Link to="/home">
-            <button className="btn btn-primary">Home</button>
-          </Link>
-        </div>
+      <div className={homeButtonStyle}>
+        <Link to="/">
+          <button className="btn btn-primary">Home</button>
+        </Link>
       </div>
     </div>
   )

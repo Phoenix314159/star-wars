@@ -3,10 +3,9 @@ import { connect } from 'react-redux'
 import Paginate from 'react-js-pagination'
 
 
-const PagBar = ({handlePageChange, paginate: {page}, search: {totalItems, size, hide}}) => {
+const PagBar = ({handlePageChange, paginate: {page}, search: {totalItems, size, hide, dude}}) => {
   const pageRangeDisplayed = Math.round((totalItems / size))
-  console.log(hide)
-  const pagBarStyle = hide ? 'pagHide' : 'pagContainer'
+  const pagBarStyle = hide || dude ? 'pagHide' : 'pagContainer'
   return (
     <div className={pagBarStyle}>
       <div className="movePag">

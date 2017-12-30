@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { Link, withRouter } from 'react-router-dom'
-import NoResults from '../components/NoResults'
+import { Link, withRouter, Redirect } from 'react-router-dom'
 import * as actions from '../actions/index'
 import '../styles/Card.scss'
 
@@ -63,11 +62,11 @@ class Card extends Component {
   }
   onClick = (p) => {
     const {main: {people, favorite}, paginate: {page}, removeFavorite, remove, removeFavorited} = this.props
-    if(this.props.history.location.pathname === '/favorites') {
+    if (this.props.history.location.pathname === '/favorites') {
       removeFavorited(people, p, page)
-     return removeFavorite(p, favorite, people)
+      return removeFavorite(p, favorite, people)
     }
-   return removeFavorite(p, favorite, people)
+    return removeFavorite(p, favorite, people)
   }
 
   renderRemoveButton = p => {
@@ -79,12 +78,13 @@ class Card extends Component {
   }
 
   render () {
-    const {people, planets, main: {favorite}, search: {hide, term}} = this.props
-    if(people.length === 0 || planets.length === 0) {
-      return <div className="loading"><h2>Loading....</h2></div>
-    }
-    if (hide && term !== '') {
-      return <NoResults/>
+    const {people, planets, main: {favorite}} = this.props
+    if (people.length === 0 || planets.length === 0) {
+      return (
+        <div className="noResults">
+          <h1>No Results Found</h1>
+        </div>
+      )
     }
     return (
       <div className="displayCards">
@@ -108,7 +108,8 @@ class Card extends Component {
                   <Link to="/edit">
                     <button className="btn btn-default" onClick={() => this.showEdit(person)}>Edit</button>
                   </Link>
-                  <button className="btn btn-success" onClick={() => this.addFavorite(person, favorite, planets)}>Favorite
+                  <button className="btn btn-success" onClick={() => this.addFavorite(person, favorite, planets)}>
+                    Favorite
                   </button>
                   {this.renderRemoveButton(person)}
                 </div>
@@ -124,7 +125,17 @@ const mapStateToProps = ({main, edit, search, paginate}) => ({main, edit, search
 
 const mapDispatchToProps = dispatch => {
   const {showEdit, hidePagBar, setNewPlanet, updatePerson, addFavorite, removeFavorite, peopleSearch, paginateFunc, removeFavorited} = actions
-  return bindActionCreators({showEdit, hidePagBar, setNewPlanet, updatePerson, addFavorite, removeFavorite, peopleSearch, paginateFunc, removeFavorited}, dispatch)
+  return bindActionCreators({
+    showEdit,
+    hidePagBar,
+    setNewPlanet,
+    updatePerson,
+    addFavorite,
+    removeFavorite,
+    peopleSearch,
+    paginateFunc,
+    removeFavorited
+  }, dispatch)
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Card))

@@ -50,6 +50,13 @@ export default (state = {}, action) => {
       const {payload: {people, person, planets}} = action
       return {...state, people, person, planets}
     }
+    case types.PEOPLE_SEARCH: {
+      const {payload: {data, term}} = action
+      if (term === '') {
+        return {...state, people: data}
+      }
+     return state
+    }
     default:
       return state
   }

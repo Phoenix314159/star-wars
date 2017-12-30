@@ -5,7 +5,6 @@ import TopSection from '../containers/TopSection'
 import ShowEdit from '../containers/ShowEdit'
 import ShowFavorites from '../containers/ShowFavorites'
 import Main from '../containers/Main'
-import NoResults from './NoResults'
 
 export default () => {
   return(
@@ -13,12 +12,11 @@ export default () => {
       <div>
         <TopSection/>
         <Switch>
-          <Route path="/no_results" component={NoResults}/>
-          <Route path="/edit" component={ShowEdit}/>
-          <Route path="/main" component={Main}/>
-          <Route path="/favorites" component={ShowFavorites}/>
-          <Route path="/home" component={Total}/>
-          <Route path="/" component={Total}/>
+          <Route exact path="/edit" component={ShowEdit}/>
+          <Route exact path="/main" component={Main}/>
+          <Route exact path="/favorites" component={ShowFavorites}/>
+          <Route exact path="/home" component={Total}/>
+          <Route exact path="/" component={Total}/>
         </Switch>
       </div>
     </BrowserRouter>
