@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { Link, withRouter } from 'react-router-dom'
-
+import NoResults from '../components/NoResults'
 import * as actions from '../actions/index'
 import '../styles/Card.scss'
 
@@ -61,23 +61,20 @@ class Card extends Component {
     if (person.isFavorite) return
     this.props.addFavorite(person, favorite)
   }
-
-  onClick (p) {
-    const {main: {people, favorite}, paginate: {page}, removeFavorite} = this.props
-    console.log(this.props.history.location.pathname)
-    if(this.props.history.location.pathname === '/') {
-      removeFavorite(p, favorite, people, page)
-    } else {
-      removeFavorite(p, favorite, people, page, true)
+  onClick = (p) => {
+    const {main: {people, favorite}, paginate: {page}, removeFavorite, remove, removeFavorited} = this.props
+    if(this.props.history.location.pathname === '/favorites') {
+      removeFavorited(people, p)
+     return removeFavorite(p, favorite, people, page, remove)
     }
-
+   return removeFavorite(p, favorite, people, page, remove)
   }
 
   renderRemoveButton = p => {
     const {isFavorite} = p
     return (
       <button className={isFavorite ? 'btn btn-danger' : 'favoriteHide'}
-              onClick={() => this.onClick(p)}>X</button>
+              onClick={() => this.onClick(p) }>X</button>
     )
   }
 
@@ -87,14 +84,7 @@ class Card extends Component {
       return <div className="loading"><h2>Loading....</h2></div>
     }
     if (hide) {
-      return (
-        <div className="noResults">
-          <h1>No Results Found</h1>
-          <Link to="/">
-            <button className="btn btn-danger">Home</button>
-          </Link>
-        </div>
-      )
+      return <NoResults/>
     }
     return (
       <div className="displayCards">
@@ -133,19 +123,8 @@ class Card extends Component {
 const mapStateToProps = ({main, edit, search, paginate}) => ({main, edit, search, paginate})
 
 const mapDispatchToProps = dispatch => {
-  const {showEdit, hidePagBar, setNewPlanet, updatePerson, addFavorite, removeFavorite, peopleSearch, paginateFunc, showFavorites, reset} = actions
-  return bindActionCreators({
-    showEdit,
-    hidePagBar,
-    setNewPlanet,
-    updatePerson,
-    addFavorite,
-    removeFavorite,
-    peopleSearch,
-    paginateFunc,
-    showFavorites,
-    reset
-  }, dispatch)
+  const {showEdit, hidePagBar, setNewPlanet, updatePerson, addFavorite, removeFavorite, peopleSearch, paginateFunc, removeFavorited} = actions
+  return bindActionCreators({showEdit, hidePagBar, setNewPlanet, updatePerson, addFavorite, removeFavorite, peopleSearch, paginateFunc, removeFavorited}, dispatch)
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Card))

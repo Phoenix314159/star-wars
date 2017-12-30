@@ -8,6 +8,7 @@ export default {
   HIDE_PAGBAR: 'hide_pagbar',
   ADD_FAVORITE: 'add_favorite',
   REMOVE_FAVORITE: 'remove_favorite',
+  REMOVE: 'remove',
   SHOW_FAVORITES: 'show_favorites',
   UPDATE_PERSON: 'update_person'
 }

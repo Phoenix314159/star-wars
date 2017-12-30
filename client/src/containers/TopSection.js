@@ -2,10 +2,10 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
-import * as actions from '../actions/index'
+import { showFavorites } from '../actions/index'
 import star from '../images/star.svg'
 import wars from '../images/wars.svg'
-import SearchBar from '../containers/SearchBar'
+import SearchBar from './SearchBar'
 
 const TopSection = ({main: {people, planets, favorite}, paginate: {page}, showFavorites}) => (
   <div className='content'>
@@ -27,9 +27,6 @@ const TopSection = ({main: {people, planets, favorite}, paginate: {page}, showFa
 )
 
 const mapStateToProps = ({main, paginate, search}) => ({main, paginate, search})
-const mapDispatchToProps = dispatch => {
-  const {showFavorites} = actions
-  return bindActionCreators({showFavorites}, dispatch)
-}
+const mapDispatchToProps = dispatch => (bindActionCreators({showFavorites}, dispatch))
 
 export default connect(mapStateToProps, mapDispatchToProps)(TopSection)

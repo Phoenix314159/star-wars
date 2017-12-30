@@ -2,11 +2,9 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import ChangeHomeWorld from './ChangeHomeWorld'
 
-export default ({
-                  handleSubmit, name, image, newPersonName, onChange1,
+export default ({handleSubmit, name, newPersonName, onChange1,
                   newPersonImage, onChange2, newPersonBirthday, url,
-                  onChange3, people, planets, selectedPlanet, goHome
-                }) => {
+                  onChange3, people, planets, selectedPlanet, goHome }) => {
   return (
     <div className="displayCards">
       <div className="card">
@@ -47,7 +45,7 @@ export default ({
             </div>
             <div className="editPerson">
               <button className="btn btn-primary" type="submit">Save</button>
-              <Link to="/">
+              <Link to="/main">
                 <button className="btn btn-danger">Cancel</button>
               </Link>
             </div>

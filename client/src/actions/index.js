@@ -86,7 +86,12 @@ export const removeFavorite = (person, favorite, people, page, show) => (
     payload: {person, favorite, people, page, show}
   }
 )
-
+export const removeFavorited = (people, person) => {
+  return {
+    type: types.REMOVE,
+    payload: {people, person}
+  }
+}
 export const showFavorites = (people, planets, page) => {
   return {
     type: types.SHOW_FAVORITES,
