@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
+
 import * as actions from '../actions/index'
 import '../styles/Card.scss'
 
@@ -63,7 +64,13 @@ class Card extends Component {
 
   onClick (p) {
     const {main: {people, favorite}, paginate: {page}, removeFavorite} = this.props
-    removeFavorite(p, favorite, people, page)
+    console.log(this.props.history.location.pathname)
+    if(this.props.history.location.pathname === '/') {
+      removeFavorite(p, favorite, people, page)
+    } else {
+      removeFavorite(p, favorite, people, page, true)
+    }
+
   }
 
   renderRemoveButton = p => {
@@ -76,6 +83,9 @@ class Card extends Component {
 
   render () {
     const {people, planets, main: {favorite}, search: {hide}} = this.props
+    if(people.length === 0 || planets.length === 0) {
+      return <div className="loading"><h2>Loading....</h2></div>
+    }
     if (hide) {
       return (
         <div className="noResults">
@@ -138,6 +148,6 @@ const mapDispatchToProps = dispatch => {
   }, dispatch)
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Card)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Card))
 
 

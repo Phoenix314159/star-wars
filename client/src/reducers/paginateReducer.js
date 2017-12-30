@@ -18,15 +18,12 @@ export default (state = {}, action) => {
       return {...state, page, subData1: getSubData(data, page), subData2: planetData}
     }
     case types.SHOW_FAVORITES: {
-      let {payload: {people, page, planets}} = action
-      people = findFavorites(people)
-      return {...state, page: 1, subData1: getSubData(people, page), subData2: planets}
+      return {...state, page: 1}
     }
     case types.REMOVE_FAVORITE: {
       let {payload: {people, page}} = action
-      const subData1 = getSubData(people, page)
-      console.log(subData1)
       people = people.filter(a => (a.isFavorite !== false))
+      const subData1 = getSubData(people, page)
       return {...state, subData1}
     }
     default:

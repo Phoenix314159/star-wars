@@ -30,19 +30,14 @@ export default (state = {}, action) => {
     case types.SHOW_FAVORITES: {
       let {payload: {people}} = action
       people = findFavorites(people)
-      return {...state, totalItems: people.length}
+      return {...state, totalItems: people.length, term: ''}
     }
-    // case types.REMOVE_FAVORITE: {
-    //   let {payload: {people}} = action
-    //   people = people.filter(a => (a.isFavorite !== false))
-    //   return {...state, totalItems: people.length}
-    // }
     case types.GET_PEOPLE_DATA: {
       const {payload: {data}} = action
-      return {...state, totalItems: data.length, term: ''}
+      return {...state, totalItems: data.length, term: '', hide: false}
     }
     case types.HIDE_PAGBAR:
-      return {...state, hide: false}
+      return {...state, hide: true}
     default:
       return state
   }

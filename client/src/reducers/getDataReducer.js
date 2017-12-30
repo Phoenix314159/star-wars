@@ -5,7 +5,7 @@ export default (state = {}, action) => {
   switch(type) {
     case types.GET_PEOPLE_DATA: {
       const {payload: {data}} = action
-      return {...state, people: data, favorite: 0}
+      return {...state, people: data, favorite: 0, firstLoadData: true}
     }
     case types.GET_PLANETS_DATA: {
       const {payload: {data}} = action
@@ -18,10 +18,19 @@ export default (state = {}, action) => {
       return {...state, favorite, person}
     }
     case types.REMOVE_FAVORITE: {
-      let {payload: {person, favorite, people}} = action
+      let {payload: {person, favorite, people, show}} = action
+      console.log(show)
       person.isFavorite = false
       favorite -= 1
-      people = people.filter(a => (a.isFavorite !== false))
+      if(show) {
+        people = people.filter(a => (a.isFavorite !== false))
+        return {...state, favorite, people}
+      }
+     for(let x in people) {
+        if(x.isFavorite) {
+          delete x.isFavorite
+        }
+     }
       return {...state, favorite, people}
     }
     case types.UPDATE_PERSON: {

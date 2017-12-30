@@ -58,12 +58,13 @@
 }
 
 .noFavorites {
-  display: flex;
-  justify-content: center;
-  h2 {
-    text-align: center;
-  }
-  button {
+  text-align: center;
+  margin-top: 13vh;
+  .noFavoritesButton {
+    margin-right: auto;
+    margin-left: auto;
     margin-top: 4vh;
   }
 }
+
+

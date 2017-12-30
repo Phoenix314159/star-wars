@@ -59,12 +59,12 @@ export const setNewPlanet = (planets, name) => (
   }
 )
 
-export const hidePagBar = boolean => (
-  {
+export const hidePagBar = boolean => {
+  return {
     type: types.HIDE_PAGBAR,
     payload: {boolean}
   }
-)
+}
 
 export const showEdit = (boolean, people, person) => (
   {
@@ -80,10 +80,10 @@ export const addFavorite = (person, favorite, planets) => (
   }
 )
 
-export const removeFavorite = (person, favorite, people, page) => (
+export const removeFavorite = (person, favorite, people, page, show) => (
   {
     type: types.REMOVE_FAVORITE,
-    payload: {person, favorite, people, page}
+    payload: {person, favorite, people, page, show}
   }
 )
 

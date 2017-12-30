@@ -21,5 +21,4 @@ const ShowEdit = ({main: {people, planets}}) => {
 
 const mapStateToProps = ({main, paginate, search}) => ({main, paginate, search})
 
-
 export default connect(mapStateToProps)(ShowEdit)
