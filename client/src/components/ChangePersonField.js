@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 export default ({people, planets, name, url, newPersonName, newPersonImage,
                   newPersonBirthday, onChange1, onChange2, onChange3,
-                  selectedPlanet, handleSubmit, pag}) => (
+                  selectedPlanet, handleSubmit, pagFunc}) => (
   <div className="displayCards">
     <div className="card">
       <div className='card-content'>
@@ -43,9 +43,9 @@ export default ({people, planets, name, url, newPersonName, newPersonImage,
                              selectedPlanet={e => selectedPlanet(e)}/>
           </div>
           <div className="editPerson">
-            <button className="btn btn-primary" type="submit" onClick={() => pag()}>Save</button>
+            <button className="btn btn-primary" type="submit" onClick={() => pagFunc()}>Save</button>
             <Link to="/main">
-              <button className="btn btn-danger" onClick={() => pag()}>Cancel</button>
+              <button className="btn btn-danger" onClick={() => pagFunc()}>Cancel</button>
             </Link>
           </div>
         </form>

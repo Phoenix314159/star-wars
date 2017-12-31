@@ -6,13 +6,10 @@ export default (state = {}, action) => {
   const {type} = action
   switch (type) {
     case types.SHOW_EDIT: {
-      const {payload: {boolean, people, person}} = action
-      if (!people || !person) {
-        return {...state, editCard: boolean}
-      }
+      const {payload: {people, person}} = action
       const {name, image} = findPerson(people, person)
       const id = findId(people, name)
-      return {...state, editCard: boolean, name, image, id}
+      return {...state, name, image, id}
     }
     case types.NEW_PLANET: {
       const {payload: {planets, name}} = action
