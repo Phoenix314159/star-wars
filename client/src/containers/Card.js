@@ -30,7 +30,7 @@ class Card extends Component {
   onClick = (p) => {
     const {main: {people, favorite}, paginate: {page}, removeFavorite, removeFavorited} = this.props
     if (this.props.history.location.pathname === '/favorites') {
-      removeFavorited(people, p, page)
+      removeFavorited(people, p, page, favorite)
       return removeFavorite(p, favorite, people)
     }
     return removeFavorite(p, favorite, people)

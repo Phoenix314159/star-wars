@@ -68,6 +68,13 @@ export const showEdit = (people, person, planets) => (
   }
 )
 
+export const showFavorites = (people, planets, page) => {
+  return {
+    type: types.SHOW_FAVORITES,
+    payload: {people, planets, page}
+  }
+}
+
 export const addFavorite = (person, favorite, planets) => (
   {
     type: types.ADD_FAVORITE,
@@ -75,25 +82,19 @@ export const addFavorite = (person, favorite, planets) => (
   }
 )
 
-export const removeFavorite = (person, favorite, people, show) => (
+export const removeFavorite = (person, favorite, people) => (
   {
     type: types.REMOVE_FAVORITE,
-    payload: {person, favorite, people, show}
+    payload: {person, favorite, people}
   }
 )
-export const removeFavorited = (people, person, page) => {
+export const removeFavorited = (people, person, page, favorite) => {
   return {
     type: types.REMOVE,
-    payload: {people, person, page}
+    payload: {people, person, page, favorite}
   }
 }
 
-export const showFavorites = (people, planets, page) => {
-  return {
-    type: types.SHOW_FAVORITES,
-    payload: {people, planets, page}
-  }
-}
 
 
 

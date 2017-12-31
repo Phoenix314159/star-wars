@@ -7,8 +7,9 @@ import star from '../images/star.svg'
 import wars from '../images/wars.svg'
 import SearchBar from './SearchBar'
 
-const TopSection = ({main: {people, planets, favorite, hideButton}, paginate: {page}, showFavorites}) => {
+const TopSection = ({main: {people, planets, favorite, hideButton, showButton}, paginate: {page}, showFavorites}) => {
   const homeButtonStyle = hideButton ? 'pagHide' : 'homeButton'
+  const showFavoritesButtonStyle = showButton ? 'btn btn-default' : 'pagHide'
   return (
     <div>
       <div className='content'>
@@ -19,7 +20,7 @@ const TopSection = ({main: {people, planets, favorite, hideButton}, paginate: {p
             <div>{favorite}</div>
           </div>
           <Link to="/favorites">
-            <button className="btn btn-default"
+            <button className={showFavoritesButtonStyle}
                     onClick={() => showFavorites(people, planets, page)}>
               Show Favorites
             </button>

@@ -5,7 +5,7 @@ export default (state = {}, action) => {
   switch(type) {
     case types.GET_PEOPLE_DATA: {
       const {payload: {data}} = action
-      return {...state, people: data, hideButton: true, favorite: 0, cancel: false}
+      return {...state, people: data, hideButton: true, favorite: 0, showButton: false}
     }
     case types.GET_PLANETS_DATA: {
       const {payload: {data}} = action
@@ -15,17 +15,16 @@ export default (state = {}, action) => {
       let {payload: {person, favorite}} = action
       person.isFavorite = true
       favorite += 1
-      return {...state, favorite, person}
+      return {...state, favorite, person, showButton: true}
     }
     case types.REMOVE_FAVORITE: {
-      let {payload: {person, favorite, people, show}} = action
+      let {payload: {person, favorite, people}} = action
       person.isFavorite = false
       favorite -= 1
-      if(show) {
-        people = people.filter(a => (a.isFavorite !== false))
-        return {...state, favorite, people}
+      if(favorite === 0) {
+        return {...state, showButton: false}
       }
-     for(let x in people) {
+      for(let x in people) {
         if(x.isFavorite) {
           delete x.isFavorite
         }
@@ -33,18 +32,15 @@ export default (state = {}, action) => {
       return {...state, favorite, people}
     }
     case types.REMOVE: {
-      let {payload: {people, person}} = action
+      let {payload: {people, person, favorite}} = action
+      favorite -= 1
       people.splice(people.indexOf(person), 1)
-      return {...state, people}
+      return {...state, people, favorite}
     }
-    // case types.UPDATE_PERSON: {
-    //   const {payload: {data}} = action
-    //   return {...state, people: data, totalItems: data.length}
-    // }
     case types.SHOW_FAVORITES: {
       let {payload: {people, planets}} = action
       people = findFavorites(people)
-      return {...state, people, planets, totalItems: people.length, hideButton: false}
+      return {...state, people, planets, hideButton: false}
     }
     case types.SHOW_EDIT: {
       const {payload: {people, person, planets}} = action
