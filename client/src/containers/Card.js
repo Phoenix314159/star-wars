@@ -14,7 +14,6 @@ class Card extends Component {
         home = planets[i].fields.name
       }
     }
-    console.log(home)
     return <span>{home}</span>
   }
 
@@ -29,7 +28,7 @@ class Card extends Component {
     this.props.addFavorite(person, favorite)
   }
   onClick = (p) => {
-    const {main: {people, favorite}, paginate: {page}, removeFavorite, remove, removeFavorited} = this.props
+    const {main: {people, favorite}, paginate: {page}, removeFavorite, removeFavorited} = this.props
     if (this.props.history.location.pathname === '/favorites') {
       removeFavorited(people, p, page)
       return removeFavorite(p, favorite, people)

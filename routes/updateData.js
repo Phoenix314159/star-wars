@@ -5,16 +5,13 @@ const mongoose = require('mongoose'),
 module.exports = app => {
 
   app.put('/api/update_person', async (req, res) => {
-    const {query: {id}, body: {name, image, birth_year, homeworld}} = req
-    const update = (field, property) => {
-      const identifier = `data.$.fields.${property}`
-      return People.update({'data.pk': id}, {'$set': {[identifier]: field}})
-    }
+    const {query: {id}, body: {name, image, birth_year, homeworld}} = req, setObj = {}
     try {
-      if(name) await update(name, 'name')
-      if(image) await update(image, 'image')
-      if(birth_year) await update(birth_year, 'birth_year')
-      if(homeworld) await update(homeworld, 'homeworld')
+      if (name) setObj['data.$.fields.name'] = name
+      if (image) setObj['data.$.fields.image'] = image
+      if (birth_year) setObj['data.$.fields.birth_year'] = birth_year
+      if (homeworld) setObj['data.$.fields.homeworld'] = homeworld
+      await People.update({'data.pk': id}, {'$set': setObj})
     }
     catch (err) {
       console.log(err)

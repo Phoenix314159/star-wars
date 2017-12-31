@@ -8,11 +8,6 @@ import PagBar from './PagBar'
 
 class Main extends Component {
 
-  // async componentDidMount () {
-  //   this.props.getPeopleData('/api/get_people_data')
-  //   this.props.getPlanetData('/api/get_planet_data')
-  // }
-
   handlePageChange = page => {
     const {paginateFunc, main: {people, planets}, search: {data, term}} = this.props
     return term !== '' ? paginateFunc(page, data, planets) : paginateFunc(page, people, planets)

@@ -20,17 +20,16 @@ export const getPlanetData = url => async dispatch => {
 export const updatePerson = (newName, newImage, newBirthday,
                              newPlanet, id, url, page, planetData, term) => async dispatch => {
   const obj = {
-      name: newName,
-      image: newImage,
-      birth_year: newBirthday,
-      homeworld: newPlanet
-    }
-    await axios.put(`${'/api/update_person'}?id=${id}`, obj)
-    // const {data} = await axios.get(url)
-    return dispatch({
-      type: types.UPDATE_PERSON,
-      payload: {page, planetData, term}
-    })
+    name: newName,
+    image: newImage,
+    birth_year: newBirthday,
+    homeworld: newPlanet
+  }
+  await axios.put(`${'/api/update_person'}?id=${id}`, obj)
+  return dispatch({
+    type: types.UPDATE_PERSON,
+    payload: {page, planetData, term}
+  })
 
 }
 
@@ -96,14 +95,6 @@ export const showFavorites = (people, planets, page) => {
   }
 }
 
-export const reset = (people, favorite, url) => async dispatch => {
-  if (people.length === 0) {
-    const {data} = await axios.get(url)
-    return dispatch({
-      type: types.GET_PEOPLE_DATA,
-      payload: {data}
-    })
-  }
-}
+
 
 

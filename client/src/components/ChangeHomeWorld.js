@@ -5,16 +5,17 @@ export default ({planets, selectedPlanet}) => (
     <select
       className="selectPlanet"
       onChange={e => selectedPlanet(e)}>
+      <option value={null}>{''}</option>
       {
         planets.map((planet, i) => {
           const {fields: {name}} = planet
-          return <option key={i} value={name}>{name}</option>
+          return <option key={i} value={i}>{name}</option>
         })
       }
     </select>
   </div>
-
 )
+
 
 
 
