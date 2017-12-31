@@ -34,7 +34,7 @@ export default (state = {}, action) => {
     }
     case types.GET_PEOPLE_DATA: {
       const {payload: {data}} = action
-      return {...state, totalItems: data.length, term: '', hide: false}
+      return {...state, totalItems: data.length}
     }
     default:
       return state

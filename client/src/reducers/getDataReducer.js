@@ -5,7 +5,7 @@ export default (state = {}, action) => {
   switch(type) {
     case types.GET_PEOPLE_DATA: {
       const {payload: {data}} = action
-      return {...state, people: data, hideButton: true, favorite: 0}
+      return {...state, people: data, hideButton: true, favorite: 0, cancel: false}
     }
     case types.GET_PLANETS_DATA: {
       const {payload: {data}} = action
@@ -48,7 +48,7 @@ export default (state = {}, action) => {
     }
     case types.SHOW_EDIT: {
       const {payload: {people, person, planets}} = action
-      return {...state, people, person, planets}
+      return {...state, people, person, planets, cancel: true}
     }
     case types.PEOPLE_SEARCH: {
       const {payload: {data, term}} = action

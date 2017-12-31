@@ -1,11 +1,11 @@
 const express = require('express'),
   app = express(),
   bodyParser = require('body-parser'),
-  {mongoUrl, port} = require('./config/dev'),
+  {mongoURI, port} = require('./config/dev'),
   mongoose = require('mongoose'),
   path = require('path')
 
-mongoose.connect(mongoUrl)
+mongoose.connect(mongoURI)
 require('./models/People')
 require('./models/Planets')
 const db = mongoose.connection
@@ -14,6 +14,7 @@ db.once('open', () => { console.log('Connected To Mongo Database')})
 app.use(bodyParser.json())
 
 require('./routes/getData')(app)
+require('./routes/updateData')(app)
 //<-----production ----->
 // app.use(express.static(path.join(__dirname, 'client/build')))
 // app.get('*', (req, res) => {

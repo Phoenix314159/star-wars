@@ -1,8 +1,9 @@
 export default (people, name) => {
   let arr = []
   people.map(element => {
-    if (element.name === name) {
-      arr.push(element.id)
+    const {fields, pk} = element
+    if (fields.name === name) {
+      arr.push(pk)
     }
   })
   return arr[0]

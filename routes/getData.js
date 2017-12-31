@@ -3,7 +3,6 @@ const mongoose = require('mongoose'),
   Planets = mongoose.model('planets'),
   error = 'an error occurred'
 
-
 module.exports = app => {
 
   app.get('/api/get_people_data', async (req, res) => {

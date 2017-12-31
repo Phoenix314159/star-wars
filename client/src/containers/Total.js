@@ -19,6 +19,7 @@ class Total extends Component {
       return <div className="loading">Loading...</div>
     }
     if (term !== '') {
+
       return <Main people={page !== 1 ? subData1 : data.slice(0, 5)}
                    planets={page !== 1 ? subData2 : planetData}/>
     }

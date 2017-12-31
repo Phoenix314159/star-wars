@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { Link, withRouter, Redirect } from 'react-router-dom'
+import { Link, withRouter} from 'react-router-dom'
 import * as actions from '../actions/index'
 import '../styles/Card.scss'
 
@@ -15,39 +15,6 @@ class Card extends Component {
       }
     }
     return <span>{home}</span>
-  }
-
-  handleSubmit = e => {
-    const newName = this.arr1[this.arr1.length - 1],
-      newImage = this.arr2[this.arr2.length - 1],
-      newBirthday = this.arr3[this.arr3.length - 1],
-      url = '/api/get_people_data',
-      {goHome, main: {people, planets}, edit: {newPlanet, id}, search: {term}, paginate: {page}, peopleSearch, paginateFunc} = this.props
-    this.props.updatePerson(newName, newImage, newBirthday, newPlanet, id, url, page, planets, term)
-    peopleSearch(people, planets, term, page)
-    paginateFunc(page, people, planets)
-    e.preventDefault()
-    goHome()
-  }
-
-  selectedPlanet = e => {
-    const {planets} = this.props
-    const {target: {selectedOptions}} = e
-    this.props.setNewPlanet(planets, selectedOptions[0].text)
-  }
-
-  arr1 = []
-  arr2 = []
-  arr3 = []
-
-  changeInfo1 = a => {
-    this.arr1.push(a)
-  }
-  changeInfo2 = a => {
-    this.arr2.push(a)
-  }
-  changeInfo3 = a => {
-    this.arr3.push(a)
   }
 
   showEdit = person => {
@@ -125,17 +92,7 @@ const mapStateToProps = ({main, edit, search, paginate}) => ({main, edit, search
 
 const mapDispatchToProps = dispatch => {
   const {showEdit, hidePagBar, setNewPlanet, updatePerson, addFavorite, removeFavorite, peopleSearch, paginateFunc, removeFavorited} = actions
-  return bindActionCreators({
-    showEdit,
-    hidePagBar,
-    setNewPlanet,
-    updatePerson,
-    addFavorite,
-    removeFavorite,
-    peopleSearch,
-    paginateFunc,
-    removeFavorited
-  }, dispatch)
+  return bindActionCreators({showEdit, hidePagBar, setNewPlanet, updatePerson, addFavorite, removeFavorite, peopleSearch, paginateFunc, removeFavorited}, dispatch)
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Card))

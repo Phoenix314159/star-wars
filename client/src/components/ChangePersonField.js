@@ -45,7 +45,7 @@ export default ({
                                selectedPlanet={e => selectedPlanet(e)}/>
             </div>
             <div className="editPerson">
-              <button className="btn btn-primary" type="submit">Save</button>
+              <button className="btn btn-primary" type="submit" onClick={() => pag()}>Save</button>
               <Link to="/main">
                 <button className="btn btn-danger" onClick={() => pag()}>Cancel</button>
               </Link>

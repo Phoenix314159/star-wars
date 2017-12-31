@@ -16,8 +16,7 @@ export default (state = {}, action) => {
     }
     case types.NEW_PLANET: {
       const {payload: {planets, name}} = action
-      const id = findId(planets, name)
-      return {...state, newPlanet: id}
+      return {...state, newPlanet: findId(planets, name)}
     }
     default:
       return state

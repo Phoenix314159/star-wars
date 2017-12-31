@@ -20,16 +20,16 @@ export default (state = {}, action) => {
     case types.SHOW_FAVORITES: {
       return {...state, page: 1}
     }
-    case types.GET_PEOPLE_DATA: {
-      const {payload: {data}} = action
-      const subData1 = getSubData(data, 1)
-      return {...state, subData1}
-    }
-    case types.GET_PLANETS_DATA: {
-      const {payload: {data}} = action
-      const subData2 = getSubData(data, 1)
-      return {...state, subData2}
-    }
+    // case types.GET_PEOPLE_DATA: {
+    //   const {payload: {data}} = action
+    //   const subData1 = getSubData(data, 1)
+    //   return {...state, subData1}
+    // }
+    // case types.GET_PLANETS_DATA: {
+    //   const {payload: {data}} = action
+    //   const subData2 = getSubData(data, 1)
+    //   return {...state, subData2}
+    // }
     case types.REMOVE: {
       let {payload: {people, page}} = action
       const subData1 = getSubData(people, page)

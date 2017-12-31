@@ -19,23 +19,19 @@ export const getPlanetData = url => async dispatch => {
 
 export const updatePerson = (newName, newImage, newBirthday,
                              newPlanet, id, url, page, planetData, term) => async dispatch => {
-  if (!newName || !newImage || !newBirthday) {
-    return null
-  }
-  else {
-    const obj = {
+  const obj = {
       name: newName,
       image: newImage,
       birth_year: newBirthday,
       homeworld: newPlanet
     }
-    await axios.patch(`${url}/${id}`, obj)
+    await axios.put(`${'/api/update_person'}?id=${id}`, obj)
     const {data} = await axios.get(url)
     return dispatch({
       type: types.UPDATE_PERSON,
       payload: {data, page, planetData, term}
     })
-  }
+
 }
 
 export const paginateFunc = (page, subData1, subData2) => (
@@ -52,12 +48,12 @@ export const peopleSearch = (data, planetData, term, page) => (
   }
 )
 
-export const setNewPlanet = (planets, name) => (
-  {
+export const setNewPlanet = (planets, name) => {
+  return {
     type: types.NEW_PLANET,
     payload: {planets, name}
   }
-)
+}
 
 export const hidePagBar = boolean => {
   return {
