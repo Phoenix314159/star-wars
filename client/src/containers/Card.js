@@ -14,6 +14,7 @@ class Card extends Component {
         home = planets[i].fields.name
       }
     }
+    console.log(home)
     return <span>{home}</span>
   }
 

@@ -37,10 +37,10 @@ export default (state = {}, action) => {
       people.splice(people.indexOf(person), 1)
       return {...state, people}
     }
-    case types.UPDATE_PERSON: {
-      const {payload: {data}} = action
-      return {...state, people: data, totalItems: data.length}
-    }
+    // case types.UPDATE_PERSON: {
+    //   const {payload: {data}} = action
+    //   return {...state, people: data, totalItems: data.length}
+    // }
     case types.SHOW_FAVORITES: {
       let {payload: {people, planets}} = action
       people = findFavorites(people)

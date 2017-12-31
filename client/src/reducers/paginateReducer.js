@@ -6,8 +6,8 @@ export default (state = {}, action) => {
   const {type} = action
   switch (type) {
     case types.PAGINATE: {
-      const {payload: {page, subData1, subData2}} = action
-      return {...state, page, subData1: getSubData(subData1, page), subData2}
+      const {payload: {page, subData1, subData2, boolean}} = action
+      return {...state, page, subData1: getSubData(subData1, page), subData2, render: boolean}
     }
     case types.HIDE_PAGBAR: {
       const {payload: {boolean}} = action

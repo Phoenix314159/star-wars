@@ -26,10 +26,10 @@ export const updatePerson = (newName, newImage, newBirthday,
       homeworld: newPlanet
     }
     await axios.put(`${'/api/update_person'}?id=${id}`, obj)
-    const {data} = await axios.get(url)
+    // const {data} = await axios.get(url)
     return dispatch({
       type: types.UPDATE_PERSON,
-      payload: {data, page, planetData, term}
+      payload: {page, planetData, term}
     })
 
 }
