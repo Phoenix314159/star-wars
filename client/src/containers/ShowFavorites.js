@@ -11,9 +11,11 @@ const ShowFavorites = ({main: {people, planets}}) => {
       </div>
     )
   }
-  return <Main people={people}
-               planets={planets}
-  />
+  return (
+    <Main people={people}
+          planets={planets}
+    />
+  )
 }
 
 const mapStateToProps = ({main}) => ({main})

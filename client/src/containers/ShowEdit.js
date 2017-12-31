@@ -12,17 +12,17 @@ class ShowEdit extends Component {
     const newName = this.arr1[this.arr1.length - 1],
       newImage = this.arr2[this.arr2.length - 1],
       newBirthday = this.arr3[this.arr3.length - 1],
-      {main: {people, planets}, edit: {newPlanet, id}, search: {term}, paginate: {page}, peopleSearch, paginateFunc} = this.props
-    this.props.updatePerson(newName, newImage, newBirthday, newPlanet, id, page, planets, term)
+      {main: {people, planets}, edit: {newPlanet, id}, search: {term}, paginate: {page}, peopleSearch, paginateFunc, updatePerson, history} = this.props
+    updatePerson(newName, newImage, newBirthday, newPlanet, id, page, planets, term)
     peopleSearch(people, planets, term, page)
     paginateFunc(page, people, planets)
-    this.props.history.push('/')
+    history.push('/')
   }
 
   selectedPlanet = e => {
-    const {main: {planets}} = this.props
+    const {main: {planets}, setNewPlanet} = this.props
     const {target: {selectedOptions}} = e
-    this.props.setNewPlanet(planets, selectedOptions[0].text)
+    setNewPlanet(planets, selectedOptions[0].text)
   }
 
   arr1 = []
@@ -59,8 +59,11 @@ class ShowEdit extends Component {
         />
       )
     }
-    return <Main  people={people}
-                  planets={planets}/>
+    return (
+      <Main  people={people}
+             planets={planets}
+      />
+    )
   }
 }
 

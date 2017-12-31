@@ -24,10 +24,7 @@ export default (state = {}, action) => {
       const subData1 = getSubData(people, page)
       if(subData1.length === 0) {
         page -= 1
-        if(page === 0) {
-          return {...state, page: 1}
-        }
-        return {...state, subData1, page}
+        return page === 0 ? {...state, page: 1} : {...state, page, subData1}
       }
       return {...state, subData1}
     }

@@ -11,19 +11,19 @@ export default (state = {}, action) => {
       const people = searchFunc(data, term)
       const planets = searchPlanets(people, planetData)
       if (term === '') {
-        return {...state, totalItems: data.length, term, dude: false}
+        return {...state, totalItems: data.length, term, hide2: false}
       }
       if (people.length === 0) {
-        return {...state, dude: true, data: people, planetData: planets, totalItems: people.length, term}
+        return {...state, totalItems: people.length, term, hide2: true, data: people, planetData: planets}
       }
-      return {...state, data: people, planetData: planets, totalItems: people.length, term, page, dude: false}
+      return {...state, totalItems: people.length, term, hide2: false, data: people, planetData: planets, page}
     }
     case types.UPDATE_PERSON: {
       let {payload: {data, page, planetData, term}} = action
       if (page === 1) {
         const people = searchFunc(data, term)
         const planets = searchPlanets(people, planetData)
-        return {...state, data: people, planetData: planets, totalItems: people.length, term, page}
+        return {...state, data: people, page, planetData: planets, term, totalItems: people.length}
       }
       break
     }

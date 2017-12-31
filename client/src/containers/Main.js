@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router-dom'
-import {paginateFunc, getPeopleData, getPlanetData} from '../actions/index'
+import { paginateFunc, getPeopleData, getPlanetData } from '../actions/index'
 import Card from './Card'
 import PagBar from './PagBar'
 
@@ -14,13 +14,15 @@ class Main extends Component {
   }
 
   render () {
-    if (this.props.history.location.pathname === '/main') {
+    const {history: {location: {pathname}}} = this.props
+    if (pathname === '/main') {
       const {main: {people, planets}, paginate: {subData1, subData2, page}, search: {term, data, planetData}} = this.props
       if (term !== '') {
         return (
           <div>
             <Card people={page !== 1 ? subData1 : data.slice(0, 5)}
-                  planets={page !== 1 ? subData2 : planetData}/>
+                  planets={page !== 1 ? subData2 : planetData}
+            />
             <PagBar handlePageChange={this.handlePageChange}/>
           </div>
         )
@@ -28,7 +30,8 @@ class Main extends Component {
       return (
         <div>
           <Card people={page !== 1 ? subData1 : people.slice(0, 5)}
-                planets={page !== 1 ? subData2 : planets}/>
+                planets={page !== 1 ? subData2 : planets}
+          />
           <PagBar handlePageChange={this.handlePageChange}/>
         </div>
       )
