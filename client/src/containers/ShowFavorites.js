@@ -19,5 +19,4 @@ const ShowFavorites = ({main: {people, planets}}) => {
 }
 
 const mapStateToProps = ({main}) => ({main})
-
 export default connect(mapStateToProps)(ShowFavorites)

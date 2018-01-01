@@ -7,13 +7,14 @@ import Main from './Main'
 
 class ShowEdit extends Component {
 
+
   handleSubmit = e => {
     e.preventDefault()
     const url1 = '/api/update_person',
       url2 = '/api/get_people_data',
-      newName = this.arr1[this.arr1.length - 1],
-      newImage = this.arr2[this.arr2.length - 1],
-      newBirthday = this.arr3[this.arr3.length - 1],
+      newName = this.nameArr[this.nameArr.length - 1],
+      newImage = this.imageArr[this.imageArr.length - 1],
+      newBirthday = this.birthdayArr[this.birthdayArr.length - 1],
       {main: {planets}, search: {term}, edit: {newPlanet, id}, paginate: {page}, updatePerson} = this.props
     updatePerson(newName, newImage, newBirthday, newPlanet, id, page, url1, url2, planets, term)
   }
@@ -24,22 +25,23 @@ class ShowEdit extends Component {
     setNewPlanet(planets, selectedOptions[0].text)
   }
 
-  arr1 = []
-  arr2 = []
-  arr3 = []
+  nameArr = []
+  imageArr = []
+  birthdayArr = []
 
-  changeInfo1 = a => {
-    this.arr1.push(a)
-  }
-  changeInfo2 = a => {
-    this.arr2.push(a)
-  }
-  changeInfo3 = a => {
-    this.arr3.push(a)
+  changeInfo = e => {
+    const {target: {name, value}} = e
+    if (name === 'newPersonName') {
+      this.nameArr.push(value)
+    } else if (name === 'newPersonImage') {
+      this.imageArr.push(value)
+    } else if (name === 'newPersonBirthday') {
+      this.birthdayArr.push(value)
+    }
   }
 
   render () {
-    const {main: {people, planets, person, ok}, edit:{spinner}} = this.props
+    const {main: {people, planets, person, ok}} = this.props
     if (person) {
       const {fields: {name, image}} = person
       return (
@@ -49,12 +51,10 @@ class ShowEdit extends Component {
           url={image}
           planets={planets}
           ok={ok}
-          spinner={spinner}
+          spinner={null}
           handleSubmit={this.handleSubmit}
           selectedPlanet={this.selectedPlanet}
-          onChange1={e => this.changeInfo1(e.target.value)}
-          onChange2={e => this.changeInfo2(e.target.value)}
-          onChange3={e => this.changeInfo3(e.target.value)}
+          handleChange={this.changeInfo}
         />
       )
     }

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import Spinner from 'react-spinkit'
 
 export default ({people, planets, name, url, newPersonName, newPersonImage, newPersonBirthday,
-                  onChange1, onChange2, onChange3, selectedPlanet, handleSubmit, ok, spinner}) => {
+                  handleChange, selectedPlanet, handleSubmit, ok, spinner}) => {
   const showOkButton = ok ? 'btn btn-primary' : 'pagHide'
   const showSaveButton = ok ? 'pagHide' : 'btn btn-primary'
   const showCancelButton = ok ? 'pagHide' : 'btn btn-danger'
@@ -21,10 +21,10 @@ export default ({people, planets, name, url, newPersonName, newPersonImage, newP
             <div className="editPerson">
               <input type="text"
                      className="form-control"
-                     name="newPersonName"
                      placeholder="enter a new name"
                      value={newPersonName}
-                     onChange={e => onChange1(e)}/>
+                     name="newPersonName"
+                     onChange={e => handleChange(e)}/>
             </div>
             <div className="editPerson">
               <input type="text"
@@ -32,7 +32,7 @@ export default ({people, planets, name, url, newPersonName, newPersonImage, newP
                      name="newPersonImage"
                      placeholder="enter an image url"
                      value={newPersonImage}
-                     onChange={e => onChange2(e)}/>
+                     onChange={e => handleChange(e)}/>
             </div>
             <div className="editPerson">
               <input type="text"
@@ -40,7 +40,7 @@ export default ({people, planets, name, url, newPersonName, newPersonImage, newP
                      name="newPersonBirthday"
                      placeholder="enter a new birthday"
                      value={newPersonBirthday}
-                     onChange={e => onChange3(e)}/>
+                     onChange={e => handleChange(e)}/>
             </div>
             <div className="editPerson">
               <ChangeHomeWorld className="editPerson" people={people}

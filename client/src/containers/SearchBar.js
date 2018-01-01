@@ -29,7 +29,5 @@ class SearchBar extends Component {
 }
 
 const mapStateToProps = ({main, paginate, search}) => ({main, paginate, search})
-
 const mapDispatchToProps = dispatch => (bindActionCreators({peopleSearch, paginateFunc}, dispatch))
-
 export default connect(mapStateToProps, mapDispatchToProps)(SearchBar)
