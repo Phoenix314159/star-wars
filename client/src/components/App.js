@@ -15,7 +15,6 @@ export default () => {
           <Route exact path="/edit" component={ShowEdit}/>
           <Route exact path="/main" component={Main}/>
           <Route exact path="/favorites" component={ShowFavorites}/>
-          <Route exact path="/home" component={Total}/>
           <Route exact path="/" component={Total}/>
         </Switch>
       </div>

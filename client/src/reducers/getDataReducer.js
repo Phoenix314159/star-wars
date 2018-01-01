@@ -5,10 +5,10 @@ import remove from '../utilities/remove'
 
 export default (state = {}, action) => {
   const {type} = action
-  switch(type) {
+  switch (type) {
     case types.GET_PEOPLE_DATA: {
       const {payload: {data}} = action
-      return {...state, people: data, hideButton: true, favorite: 0, showButton: false}
+      return {...state, people: data, hideButton: true, favorite: 0, showButton: false, ok: false, initialLoad: true}
     }
     case types.GET_PLANETS_DATA: {
       const {payload: {data}} = action
@@ -24,7 +24,7 @@ export default (state = {}, action) => {
       let {payload: {person, favorite, people}} = action
       person.isFavorite = false
       favorite -= 1
-      if(favorite === 0) {
+      if (favorite === 0) {
         return {...state, showButton: false, favorite}
       }
       people = removeFavorite(people)
@@ -39,11 +39,15 @@ export default (state = {}, action) => {
     case types.SHOW_FAVORITES: {
       let {payload: {people, planets}} = action
       people = findFavorites(people)
-      return {...state, people, planets, hideButton: false}
+      return {...state, people, planets, hideButton: false, initialLoad: false}
     }
     case types.SHOW_EDIT: {
       const {payload: {people, person, planets}} = action
-      return {...state, people, person, planets}
+      return {...state, people, person, planets, ok: false}
+    }
+    case types.UPDATE_PERSON: {
+      const {payload: {data, planets}} = action
+      return {...state, ok: true, people: data, planets}
     }
     default:
       return state

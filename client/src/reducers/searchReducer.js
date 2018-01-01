@@ -18,15 +18,6 @@ export default (state = {}, action) => {
       }
       return {...state, totalItems: people.length, term, hide2: false, data: people, planetData: planets, page}
     }
-    case types.UPDATE_PERSON: {
-      let {payload: {data, page, planetData, term}} = action
-      if (page === 1) {
-        const people = searchFunc(data, term)
-        const planets = searchPlanets(people, planetData)
-        return {...state, data: people, page, planetData: planets, term, totalItems: people.length}
-      }
-      break
-    }
     case types.SHOW_FAVORITES: {
       let {payload: {people}} = action
       people = findFavorites(people)
@@ -35,6 +26,10 @@ export default (state = {}, action) => {
     case types.GET_PEOPLE_DATA: {
       const {payload: {data}} = action
       return {...state, totalItems: data.length}
+    }
+    case types.UPDATE_PERSON: {
+      const {payload: {term}} = action
+      return {...state, term}
     }
     default:
       return state

@@ -13,8 +13,8 @@ export default (state = {}, action) => {
       return {...state, hide: boolean}
     }
     case types.UPDATE_PERSON: {
-      const {payload: {page, data, planetData}} = action
-      return {...state, page, subData1: getSubData(data, page), subData2: planetData}
+      const {payload: {page, data, planets}} = action
+      return {...state, page, subData1: getSubData(data, page), subData2: planets}
     }
     case types.SHOW_FAVORITES: {
       return {...state, page: 1}

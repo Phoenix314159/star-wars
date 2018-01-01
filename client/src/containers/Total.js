@@ -1,6 +1,6 @@
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import '../styles/App.scss'
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { getPeopleData, getPlanetData } from '../actions/index'
@@ -9,8 +9,11 @@ import Main from './Main'
 class Total extends Component {
 
   async componentDidMount () {
-    this.props.getPeopleData('/api/get_people_data')
-    this.props.getPlanetData('/api/get_planet_data')
+    const {main: {initialLoad}} = this.props
+    if(!initialLoad) {
+      this.props.getPeopleData('/api/get_people_data')
+      this.props.getPlanetData('/api/get_planet_data')
+    }
   }
 
   render () {
@@ -19,13 +22,17 @@ class Total extends Component {
       return <div className="loading">Loading...</div>
     }
     if (term !== '') {
-
-      return <Main people={page !== 1 ? subData1 : data.slice(0, 5)}
-                   planets={page !== 1 ? subData2 : planetData}/>
+      return (
+        <Main people={page !== 1 ? subData1 : data.slice(0, 5)}
+              planets={page !== 1 ? subData2 : planetData}
+        />
+      )
     }
-    return <Main people={page !== 1 ? subData1 : people.slice(0, 5)}
-                 planets={page !== 1 ? subData2 : planets}/>
-
+    return (
+      <Main people={page !== 1 ? subData1 : people.slice(0, 5)}
+            planets={page !== 1 ? subData2 : planets}
+      />
+    )
   }
 }
 

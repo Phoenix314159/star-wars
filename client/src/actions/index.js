@@ -17,20 +17,20 @@ export const getPlanetData = url => async dispatch => {
   })
 }
 
-export const updatePerson = (newName, newImage, newBirthday,
-                             newPlanet, id, url, page, planetData, term) => async dispatch => {
+export const updatePerson = (newName, newImage, newBirthday, newPlanet, id,
+                             page, url1, url2, planets, term) => async dispatch => {
   const obj = {
     name: newName,
     image: newImage,
     birth_year: newBirthday,
     homeworld: newPlanet
   }
-  await axios.put(`${'/api/update_person'}?id=${id}`, obj)
+  await axios.put(`${url1}?id=${id}`, obj)
+  const {data: {data}} = await axios.get(url2)
   return dispatch({
     type: types.UPDATE_PERSON,
-    payload: {page, planetData, term}
+    payload: {page, data, planets, term}
   })
-
 }
 
 export const paginateFunc = (page, subData1, subData2) => (

@@ -49,7 +49,5 @@ class Main extends Component {
 }
 
 const mapStateToProps = ({main, paginate, search}) => ({main, paginate, search})
-
 const mapDispatchToProps = dispatch => (bindActionCreators({paginateFunc, getPeopleData, getPlanetData}, dispatch))
-
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main))

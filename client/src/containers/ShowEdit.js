@@ -1,7 +1,7 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
-import {bindActionCreators} from 'redux'
-import {paginateFunc, updatePerson, peopleSearch, setNewPlanet} from '../actions'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { paginateFunc, updatePerson, peopleSearch, setNewPlanet } from '../actions'
 import ChangePersonField from '../components/ChangePersonField'
 import Main from './Main'
 
@@ -9,14 +9,13 @@ class ShowEdit extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
-    const newName = this.arr1[this.arr1.length - 1],
+    const url1 = '/api/update_person',
+      url2 = '/api/get_people_data',
+      newName = this.arr1[this.arr1.length - 1],
       newImage = this.arr2[this.arr2.length - 1],
       newBirthday = this.arr3[this.arr3.length - 1],
-      {main: {people, planets}, edit: {newPlanet, id}, search: {term}, paginate: {page}, peopleSearch, paginateFunc, updatePerson, history} = this.props
-    updatePerson(newName, newImage, newBirthday, newPlanet, id, page, planets, term)
-    peopleSearch(people, planets, term, page)
-    paginateFunc(page, people, planets)
-    history.push('/')
+      {main: {planets}, search: {term}, edit: {newPlanet, id}, paginate: {page}, updatePerson} = this.props
+    updatePerson(newName, newImage, newBirthday, newPlanet, id, page, url1, url2, planets, term)
   }
 
   selectedPlanet = e => {
@@ -39,10 +38,9 @@ class ShowEdit extends Component {
     this.arr3.push(a)
   }
 
-
-  render() {
-    const {main: {people, planets, person}, paginate: {page}, paginateFunc} = this.props
-    if(person) {
+  render () {
+    const {main: {people, planets, person, ok}, edit:{spinner}} = this.props
+    if (person) {
       const {fields: {name, image}} = person
       return (
         <ChangePersonField
@@ -50,7 +48,8 @@ class ShowEdit extends Component {
           people={people}
           url={image}
           planets={planets}
-          pag={() => paginateFunc(page, people, planets)}
+          ok={ok}
+          spinner={spinner}
           handleSubmit={this.handleSubmit}
           selectedPlanet={this.selectedPlanet}
           onChange1={e => this.changeInfo1(e.target.value)}
@@ -60,13 +59,12 @@ class ShowEdit extends Component {
       )
     }
     return (
-      <Main  people={people}
-             planets={planets}
+      <Main people={people}
+            planets={planets}
       />
     )
   }
 }
-
 
 const mapStateToProps = ({main, paginate, search, edit}) => ({main, paginate, search, edit})
 const mapDispatchToProps = dispatch => (bindActionCreators({paginateFunc, updatePerson, peopleSearch, setNewPlanet}, dispatch))
