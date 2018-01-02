@@ -8,7 +8,9 @@ const peopleSchema = new Schema({
         name: String,
         homeworld: Number,
         birth_year: String,
-        image: String
+        image: String,
+        newImage: String,
+        isImageUpdated: Boolean
       },
       pk: Number
     }

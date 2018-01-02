@@ -7,7 +7,7 @@ import '../styles/SearchBar.scss'
 class SearchBar extends Component {
 
   onInputChange (term) {
-    const {peopleSearch, paginateFunc, paginate: {page}, main: {people, planets}} = this.props
+    const {main: {people, planets}, paginate: {page}, peopleSearch, paginateFunc} = this.props
     if (page > 1) {
       paginateFunc(1, people, planets)
       return peopleSearch(people, planets, term, page)

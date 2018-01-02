@@ -19,10 +19,12 @@
     }
   }
 }
+
 .spinner {
   margin-left: 1vw;
   margin-top: .3vh;
 }
+
 .card-content {
   padding: 10px;
   background: #222;
@@ -52,6 +54,20 @@
   margin-top: 1.5vh;
 }
 
+.planetSelect {
+  display: flex;
+  justify-content: center;
+  h6 {
+    margin-top: 2.5vh;
+    margin-bottom: -0.5vh;
+    margin-left: .4vw;
+  }
+  .selectPlanet {
+    color: black;
+    margin: 15px;
+  }
+}
+
 .noResults {
   color: lightgrey;
   text-align: center;
@@ -61,6 +77,7 @@
 .noResults button {
   margin-top: 5vh;
 }
+
 .loading {
   color: lightgrey;
   text-align: center;
@@ -68,13 +85,10 @@
   font-size: 2em;
 }
 
-.selectPlanet {
-  color: black;
-  margin: 15px auto;
-}
 .favoriteHide {
   display: none;
 }
+
 .loading {
   color: whitesmoke;
   text-align: center;

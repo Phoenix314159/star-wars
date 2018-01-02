@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router-dom'
-import { paginateFunc, getPeopleData, getPlanetData } from '../actions/index'
+import { paginateFunc } from '../actions/index'
 import Card from './Card'
 import PagBar from './PagBar'
 
@@ -49,5 +49,5 @@ class Main extends Component {
 }
 
 const mapStateToProps = ({main, paginate, search}) => ({main, paginate, search})
-const mapDispatchToProps = dispatch => (bindActionCreators({paginateFunc, getPeopleData, getPlanetData}, dispatch))
+const mapDispatchToProps = dispatch => (bindActionCreators({paginateFunc}, dispatch))
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main))

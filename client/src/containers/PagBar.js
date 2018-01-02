@@ -19,5 +19,5 @@ const PagBar = ({handlePageChange, paginate: {page}, search: {totalItems, size, 
   )
 }
 
-const mapStateToProps = ({main, paginate, search}) => ({main, paginate, search})
+const mapStateToProps = ({paginate, search}) => ({paginate, search})
 export default connect(mapStateToProps)(PagBar)

@@ -2,6 +2,7 @@ import React from 'react'
 
 export default ({planets, selectedPlanet}) => (
   <div>
+    <h6>select a new homeworld</h6>
     <select
       className="selectPlanet"
       onChange={e => selectedPlanet(e)}>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { Link, withRouter} from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import * as actions from '../actions/index'
 import '../styles/Card.scss'
 
@@ -18,7 +18,7 @@ class Card extends Component {
   }
 
   showEdit = person => {
-    const {showEdit, hidePagBar, main: {people, planets}} = this.props
+    const {main: {people, planets}, showEdit, hidePagBar} = this.props
     showEdit(people, person, planets)
     hidePagBar(true)
   }
@@ -45,7 +45,7 @@ class Card extends Component {
   }
 
   render () {
-    const {people, planets, main: {favorite}} = this.props
+    const {people, planets, main: {favorite, imageUrl}} = this.props
     if (people.length === 0 || planets.length === 0) {
       return (
         <div className="noResults">
@@ -56,12 +56,12 @@ class Card extends Component {
     return (
       <div className="displayCards">
         {people.map((person, i) => {
-          const {name, image, birth_year, homeworld} = person.fields
+          const {fields: {name, image, birth_year, homeworld, newImage, isImageUpdated}} = person
           return (
             <div className='card' key={i}>
               <div className='card-content'>
                 <div className='card-name text-center'>{name}</div>
-                <img src={`/imgs/${image}`} alt=''
+                <img src={isImageUpdated ? newImage : `${imageUrl}/${image}`} alt='image url not found'
                      style={{height: '150px', width: '150px'}}/>
                 <p>
                   <span>Birthday:</span>
@@ -88,11 +88,11 @@ class Card extends Component {
     )
   }
 }
-const mapStateToProps = ({main, edit, search, paginate}) => ({main, edit, search, paginate})
+const mapStateToProps = ({main, search, paginate}) => ({main, search, paginate})
 
 const mapDispatchToProps = dispatch => {
-  const {showEdit, hidePagBar, setNewPlanet, updatePerson, addFavorite, removeFavorite, peopleSearch, paginateFunc, removeFavorited} = actions
-  return bindActionCreators({showEdit, hidePagBar, setNewPlanet, updatePerson, addFavorite, removeFavorite, peopleSearch, paginateFunc, removeFavorited}, dispatch)
+  const {showEdit, hidePagBar, addFavorite, removeFavorite, removeFavorited} = actions
+  return bindActionCreators({showEdit, hidePagBar, addFavorite, removeFavorite, removeFavorited}, dispatch)
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Card))

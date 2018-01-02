@@ -17,19 +17,27 @@ export const getPlanetData = url => async dispatch => {
   })
 }
 
-export const updatePerson = (newName, newImage, newBirthday, newPlanet, id,
-                             page, url1, url2, planets, term) => async dispatch => {
+export const getImages = url => async dispatch => {
+  const {data} = await axios.get(url)
+  return dispatch({
+    type: types.GET_IMAGES,
+    payload: {data}
+  })
+}
+
+export const updatePerson = (newName, newImage, newBirthday, newPlanet,
+                             id, page, planets, person) => async dispatch => {
   const obj = {
     name: newName,
     image: newImage,
     birth_year: newBirthday,
     homeworld: newPlanet
   }
-  await axios.put(`${url1}?id=${id}`, obj)
-  const {data: {data}} = await axios.get(url2)
+  await axios.put(`${'/api/update_person'}?id=${id}`, obj)
+  const {data: {data}} = await axios.get('/api/get_people_data')
   return dispatch({
     type: types.UPDATE_PERSON,
-    payload: {page, data, planets, term}
+    payload: {data, planets, page, newImage, person}
   })
 }
 

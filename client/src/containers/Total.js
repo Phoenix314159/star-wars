@@ -3,8 +3,9 @@ import '../styles/App.scss'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { getPeopleData, getPlanetData } from '../actions/index'
+import { getPeopleData, getPlanetData, getImages } from '../actions/index'
 import Main from './Main'
+
 
 class Total extends Component {
 
@@ -13,6 +14,7 @@ class Total extends Component {
     if(!initialLoad) {
       this.props.getPeopleData('/api/get_people_data')
       this.props.getPlanetData('/api/get_planet_data')
+      this.props.getImages('/api/get_image_url')
     }
   }
 
@@ -37,7 +39,7 @@ class Total extends Component {
 }
 
 const mapStateToProps = ({main, paginate, search}) => ({main, paginate, search})
-const mapDispatchToProps = dispatch => (bindActionCreators({getPeopleData, getPlanetData}, dispatch))
+const mapDispatchToProps = dispatch => (bindActionCreators({getPeopleData, getPlanetData, getImages}, dispatch))
 export default connect(mapStateToProps, mapDispatchToProps)(Total)
 
 

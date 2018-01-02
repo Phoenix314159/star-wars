@@ -1,22 +1,19 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { paginateFunc, updatePerson, peopleSearch, setNewPlanet } from '../actions'
+import { updatePerson, setNewPlanet } from '../actions'
 import ChangePersonField from '../components/ChangePersonField'
 import Main from './Main'
 
 class ShowEdit extends Component {
 
-
   handleSubmit = e => {
     e.preventDefault()
-    const url1 = '/api/update_person',
-      url2 = '/api/get_people_data',
-      newName = this.nameArr[this.nameArr.length - 1],
+    const newName = this.nameArr[this.nameArr.length - 1],
       newImage = this.imageArr[this.imageArr.length - 1],
       newBirthday = this.birthdayArr[this.birthdayArr.length - 1],
-      {main: {planets}, search: {term}, edit: {newPlanet, id}, paginate: {page}, updatePerson} = this.props
-    updatePerson(newName, newImage, newBirthday, newPlanet, id, page, url1, url2, planets, term)
+      {main: {planets, person}, paginate: {page}, edit: {newPlanet, id}, updatePerson} = this.props
+    updatePerson(newName, newImage, newBirthday, newPlanet, id, page, planets, person)
   }
 
   selectedPlanet = e => {
@@ -41,14 +38,17 @@ class ShowEdit extends Component {
   }
 
   render () {
-    const {main: {people, planets, person, ok}} = this.props
+    const {main: {people, planets, person, ok, imageUrl}} = this.props
     if (person) {
-      const {fields: {name, image}} = person
+      const {fields: {name, image, newImage, isImageUpdated}} = person
       return (
         <ChangePersonField
           name={name}
           people={people}
-          url={image}
+          image={image}
+          imageUrl={imageUrl}
+          newImage={newImage}
+          isImageUpdated={isImageUpdated}
           planets={planets}
           ok={ok}
           spinner={null}
@@ -67,5 +67,5 @@ class ShowEdit extends Component {
 }
 
 const mapStateToProps = ({main, paginate, search, edit}) => ({main, paginate, search, edit})
-const mapDispatchToProps = dispatch => (bindActionCreators({paginateFunc, updatePerson, peopleSearch, setNewPlanet}, dispatch))
+const mapDispatchToProps = dispatch => (bindActionCreators({updatePerson, setNewPlanet}, dispatch))
 export default connect(mapStateToProps, mapDispatchToProps)(ShowEdit)

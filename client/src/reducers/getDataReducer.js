@@ -2,6 +2,7 @@ import types from '../actions/types'
 import findFavorites from '../utilities/findFavorites'
 import removeFavorite from '../utilities/removeFavorite'
 import remove from '../utilities/remove'
+import newImageFunc from '../utilities/newImageFunc'
 
 export default (state = {}, action) => {
   const {type} = action
@@ -13,6 +14,10 @@ export default (state = {}, action) => {
     case types.GET_PLANETS_DATA: {
       const {payload: {data}} = action
       return {...state, planets: data}
+    }
+    case types.GET_IMAGES: {
+      const {payload: {data}} = action
+      return {...state, imageUrl: data}
     }
     case types.ADD_FAVORITE: {
       let {payload: {person, favorite}} = action
@@ -46,8 +51,9 @@ export default (state = {}, action) => {
       return {...state, people, person, planets, ok: false}
     }
     case types.UPDATE_PERSON: {
-      const {payload: {data, planets}} = action
-      return {...state, ok: true, people: data, planets}
+      let {payload: {data, planets, newImage, person}} = action
+      data = newImageFunc(data, person)
+      return {...state, ok: true, people: data, planets, newImageUrl: newImage}
     }
     default:
       return state

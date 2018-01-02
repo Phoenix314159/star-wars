@@ -28,8 +28,8 @@ export default (state = {}, action) => {
       return {...state, totalItems: data.length}
     }
     case types.UPDATE_PERSON: {
-      const {payload: {term}} = action
-      return {...state, term}
+      const {payload: {data}} = action
+      return {...state, totalItems: data.length, term: ''}
     }
     default:
       return state
