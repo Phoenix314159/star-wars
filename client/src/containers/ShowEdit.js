@@ -66,6 +66,6 @@ class ShowEdit extends Component {
   }
 }
 
-const mapStateToProps = ({main, paginate, search, edit}) => ({main, paginate, search, edit})
+const mapStateToProps = ({main, paginate, edit}) => ({main, paginate, edit})
 const mapDispatchToProps = dispatch => (bindActionCreators({updatePerson, setNewPlanet}, dispatch))
 export default connect(mapStateToProps, mapDispatchToProps)(ShowEdit)

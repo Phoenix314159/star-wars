@@ -37,6 +37,6 @@ const TopSection = ({main: {people, planets, favorite, hideButton, showButton}, 
   )
 }
 
-const mapStateToProps = ({main, paginate, search}) => ({main, paginate, search})
+const mapStateToProps = ({main, paginate}) => ({main, paginate})
 const mapDispatchToProps = dispatch => (bindActionCreators({showFavorites}, dispatch))
 export default connect(mapStateToProps, mapDispatchToProps)(TopSection)

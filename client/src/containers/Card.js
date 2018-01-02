@@ -27,6 +27,7 @@ class Card extends Component {
     if (person.isFavorite) return
     this.props.addFavorite(person, favorite)
   }
+
   onClick = (p) => {
     const {main: {people, favorite}, paginate: {page}, history: {location: {pathname}}, removeFavorite, removeFavorited} = this.props
     if (pathname === '/favorites') {
@@ -88,7 +89,7 @@ class Card extends Component {
     )
   }
 }
-const mapStateToProps = ({main, search, paginate}) => ({main, search, paginate})
+const mapStateToProps = ({main, paginate}) => ({main, paginate})
 
 const mapDispatchToProps = dispatch => {
   const {showEdit, hidePagBar, addFavorite, removeFavorite, removeFavorited} = actions
