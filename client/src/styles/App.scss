@@ -1,4 +1,119 @@
-@import './Home.scss';
+$twinkling: 200s linear infinite;
+.total {
+  //background-color: black;
+  background-image: -moz-radial-gradient(circle, #FFFFFF .2px, #C0C0C0 .2px, transparent 2.5px),
+  -moz-radial-gradient(circle, #FFFFFF .25px, #778899 .25px, transparent 3.75px),
+  -moz-radial-gradient(ellipse, #778899 .2px, #D3D3D3 .5px, transparent 2.5px),
+  -moz-radial-gradient(ellipse, #FFFFFF, #C0C0C0 .2px, transparent 1.75px);
+  background-image: -webkit-gradient(radial, 50% 50%, 2, 50% 50%, 2.5, from(white), color-stop(0.1, #C0C0C0), to(transparent)),
+  -webkit-gradient(radial, 50% 50%, 1, 50% 50%, 1.75, from(white), color-stop(0.1, #778899), to(transparent)),
+  -webkit-gradient(radial, 50% 50%, 1, 50% 50%, 2.5, from(#778899), color-stop(0.05, #D3D3D3), to(transparent)),
+  -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 1.75, from(rgba(255, 255, 255, .4)), color-stop(0.03, #C0C0C0), to(transparent));
+  background-size: 550px 550px, 350px 350px, 250px 270px, 220px 200px;
+  background-position: 0 0, 30px 60px, 130px 270px, 70px 150px;
+  animation-name: movement;
+  animation-duration: 15s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  -moz-animation-name: movement;
+  -moz-animation-duration: 15s;
+  -moz-animation-timing-function: linear;
+  -moz-animation-iteration-count: infinite;
+  -webkit-animation-name: movement;
+  -webkit-animation-duration: 15s;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+}
+
+@keyframes movement {
+  from {
+    background-position: 0 0, -30px -60px, -130px -270px, -70px -150px;
+  }
+  to {
+    background-position: 1000px 1000px, 320px 60px, 120px 270px, 120px 120px;
+  }
+}
+
+@-moz-keyframes movement {
+  from {
+    background-position: 0 0, 30px 60px, 130px 270px, 70px 150px;
+  }
+  to {
+    background-position: -550px 0, -320px 60px, -120px 270px, -150px 150px;
+  }
+}
+
+@-webkit-keyframes movement {
+  from {
+    background-position: 0 0, 30px 60px, 130px 270px, 70px 150px;
+  }
+  to {
+    background-position: -550px 0, -320px 60px, -120px 270px, -150px 150px;
+  }
+}
+
+.stars {
+  position: absolute;
+  background: url('../images/stars2.png');
+  z-index: -3;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-blend-mode: darken;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.twinkling {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -3;
+  background: url('../images/twinkling.png') repeat center;
+  -moz-animation: move-twink-back $twinkling;
+  -o-animation: move-twink-back $twinkling;
+  -webkit-animation: move-twink-back $twinkling;
+  animation: move-twink-back $twinkling;
+}
+
+@keyframes move-twink-back {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -10000px 5000px;
+  }
+}
+
+@-webkit-keyframes move-twink-back {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -10000px 5000px;
+  }
+}
+
+@-moz-keyframes move-twink-back {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -10000px 5000px;
+  }
+}
+
+@-ms-keyframes move-twink-back {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -10000px 5000px;
+  }
+}
+
+
 
 .content {
   max-width: 1633px;
@@ -66,6 +181,7 @@
     margin-top: 4vh;
   }
 }
+
 .homeButton {
   display: flex;
   justify-content: center;
@@ -73,7 +189,7 @@
   margin-top: -4vh;
 }
 
-.initialLoading{
+.initialLoading {
   color: whitesmoke;
   text-align: center;
   margin-top: 51.7vh;
