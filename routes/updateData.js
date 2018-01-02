@@ -25,12 +25,12 @@ module.exports = app => {
 
   app.put('/api/set_images', async (req, res) => {
     const [data] = await People.find({})
-    for(let i=0; i< data.data.length; i++) {
-      const id = data.data[i].pk
-      if(data.data[i].fields.isImageUpdated) {
-        await People.update({'data.pk': id}, {'$set': {'data.$.fields.isImageUpdated': false}})
+    data.data.forEach(async element => {
+      const {pk, fields: {isImageUpdated}} = element
+      if(isImageUpdated) {
+        await People.update({'data.pk': pk}, {'$set': {'data.$.fields.isImageUpdated': false}})
       }
-    }
-    res.send(data)
+    })
+    res.send('pictures updated')
   })
 }

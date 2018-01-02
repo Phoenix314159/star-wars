@@ -1,6 +1,6 @@
 export default (people, name) => {
   let arr = []
-  people.map(element => {
+  people.forEach(element => {
     const {fields, pk} = element
     if (fields.name === name) {
       arr.push(pk)

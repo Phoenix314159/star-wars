@@ -1,7 +1,8 @@
 export default (data, term) => {
-  let arr = []
-  data.map(element => {
-    if (element.fields.name.toLowerCase().includes(term, 0)) {
+  const arr = []
+  data.forEach(element => {
+    const {fields: {name}} = element
+    if (name.toLowerCase().includes(term, 0)) {
       arr.push(element)
     }
   })

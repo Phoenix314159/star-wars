@@ -1,7 +1,8 @@
 export default people => {
   const arr = []
-  people.map(element => {
-    if (element.isFavorite) {
+  people.forEach(element => {
+    const {isFavorite} = element
+    if (isFavorite) {
       arr.push(element)
     }
   })

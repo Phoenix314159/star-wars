@@ -2,8 +2,7 @@ export default {
   main: {
     planets: [],
     people: [],
-    favorite: 0,
-    spinner: false
+    favorite: 0
   },
   paginate: {
     page: 1,
@@ -13,7 +12,6 @@ export default {
     term: '',
     size: 5,
     totalItems: 82,
-    hide: false,
-    hidePageBar: false
+    hide: false
   }
 }
