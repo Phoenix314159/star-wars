@@ -1,7 +1,8 @@
 export default {
+  SET_IMAGES: 'set_images',
   GET_PEOPLE_DATA: 'get_data',
   GET_PLANETS_DATA: 'get_planets_data',
-  GET_IMAGES: 'get_images',
+  GET_IMAGE_URL: 'get_image_url',
   PAGINATE: 'paginate',
   PEOPLE_SEARCH: 'people_search',
   NEW_PLANET: 'new_planet',

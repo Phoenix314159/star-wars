@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router-dom'
-import { paginateFunc } from '../actions/index'
+import { paginateFunc } from '../actions'
 import Card from './Card'
 import PagBar from './PagBar'
 

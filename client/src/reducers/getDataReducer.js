@@ -7,6 +7,10 @@ import newImageFunc from '../utilities/newImageFunc'
 export default (state = {}, action) => {
   const {type} = action
   switch (type) {
+    case types.SET_IMAGES: {
+      const {payload: {setImages}} = action
+      return {...state, setImages}
+    }
     case types.GET_PEOPLE_DATA: {
       const {payload: {data}} = action
       return {...state, people: data, hideButton: true, favorite: 0, showButton: false, ok: false, initialLoad: true}
@@ -15,7 +19,7 @@ export default (state = {}, action) => {
       const {payload: {data}} = action
       return {...state, planets: data}
     }
-    case types.GET_IMAGES: {
+    case types.GET_IMAGE_URL: {
       const {payload: {data}} = action
       return {...state, imageUrl: data}
     }

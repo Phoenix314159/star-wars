@@ -1,11 +1,8 @@
-import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
-import '../styles/App.scss'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { getPeopleData, getPlanetData, getImages } from '../actions/index'
+import { getPeopleData, getPlanetData, getImageUrl } from '../actions'
 import Main from './Main'
-
 
 class Total extends Component {
 
@@ -14,7 +11,7 @@ class Total extends Component {
     if(!initialLoad) {
       this.props.getPeopleData('/api/get_people_data')
       this.props.getPlanetData('/api/get_planet_data')
-      this.props.getImages('/api/get_image_url')
+      this.props.getImageUrl('/api/get_image_url')
     }
   }
 
@@ -39,7 +36,7 @@ class Total extends Component {
 }
 
 const mapStateToProps = ({main, paginate, search}) => ({main, paginate, search})
-const mapDispatchToProps = dispatch => (bindActionCreators({getPeopleData, getPlanetData, getImages}, dispatch))
+const mapDispatchToProps = dispatch => (bindActionCreators({getPeopleData, getPlanetData, getImageUrl}, dispatch))
 export default connect(mapStateToProps, mapDispatchToProps)(Total)
 
 

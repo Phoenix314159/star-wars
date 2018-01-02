@@ -1,9 +1,9 @@
+import '../styles/Card.scss'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { Link, withRouter } from 'react-router-dom'
-import * as actions from '../actions/index'
-import '../styles/Card.scss'
+import * as actions from '../actions'
 
 class Card extends Component {
 

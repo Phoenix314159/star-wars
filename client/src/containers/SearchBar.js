@@ -1,8 +1,8 @@
+import '../styles/SearchBar.scss'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { peopleSearch, paginateFunc } from '../actions'
-import '../styles/SearchBar.scss'
 
 class SearchBar extends Component {
 

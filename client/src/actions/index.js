@@ -1,6 +1,17 @@
 import types from './types'
 import axios from 'axios'
 
+export const resetImages = url => async dispatch => {
+  const {data} = await axios.put(url, null) //on page refresh images are set back to original
+  if(data === 'pictures updated') {
+    const setImages = true
+    return dispatch({
+      type: types.SET_IMAGES,
+      payload: {setImages}
+    })
+  }
+}
+
 export const getPeopleData = url => async dispatch => {
   const {data: {data}} = await axios.get(url)
   return dispatch({
@@ -17,10 +28,10 @@ export const getPlanetData = url => async dispatch => {
   })
 }
 
-export const getImages = url => async dispatch => {
+export const getImageUrl = url => async dispatch => {
   const {data} = await axios.get(url)
   return dispatch({
-    type: types.GET_IMAGES,
+    type: types.GET_IMAGE_URL,
     payload: {data}
   })
 }
@@ -55,19 +66,19 @@ export const peopleSearch = (data, planetData, term, page) => (
   }
 )
 
-export const setNewPlanet = (planets, name) => {
-  return {
+export const setNewPlanet = (planets, name) => (
+  {
     type: types.NEW_PLANET,
     payload: {planets, name}
   }
-}
+)
 
-export const hidePagBar = boolean => {
-  return {
+export const hidePagBar = boolean => (
+  {
     type: types.HIDE_PAGBAR,
     payload: {boolean}
   }
-}
+)
 
 export const showEdit = (people, person, planets) => (
   {
@@ -76,12 +87,12 @@ export const showEdit = (people, person, planets) => (
   }
 )
 
-export const showFavorites = (people, planets, page) => {
-  return {
+export const showFavorites = (people, planets, page) => (
+  {
     type: types.SHOW_FAVORITES,
     payload: {people, planets, page}
   }
-}
+)
 
 export const addFavorite = (person, favorite, planets) => (
   {
@@ -96,12 +107,12 @@ export const removeFavorite = (person, favorite, people) => (
     payload: {person, favorite, people}
   }
 )
-export const removeFavorited = (people, person, page, favorite) => {
-  return {
+export const removeFavorited = (people, person, page, favorite) => (
+  {
     type: types.REMOVE,
     payload: {people, person, page, favorite}
   }
-}
+)
 
 
 

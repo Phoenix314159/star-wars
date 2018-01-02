@@ -1,28 +1,24 @@
+import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import '../styles/App.scss'
 import React, { Component } from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import Total from '../containers/Total'
-import TopSection from '../containers/TopSection'
-import ShowEdit from '../containers/ShowEdit'
-import ShowFavorites from '../containers/ShowFavorites'
-import Main from '../containers/Main'
-import axios from 'axios'
+import { connect } from 'react-redux'
+import { resetImages } from '../actions'
+import Total from './Total'
+import TopSection from './TopSection'
+import ShowEdit from './ShowEdit'
+import ShowFavorites from './ShowFavorites'
+import Main from './Main'
 
-export default class extends Component {
-  constructor () {
-    super()
-    this.state = {
-      setImages: false
-    }
-  }
+class App extends Component {
 
   async componentDidMount () {
-    const res = await axios.put('/api/set_images', null) //on page refresh images are set back to original
-    res ? this.setState({setImages: true}) : null
+    this.props.resetImages('/api/set_images')
   }
 
   render () {
-    const {setImages} = this.state
-    if (setImages) {
+    const {main: {setImages}} = this.props
+    if(setImages) {
       return (
         <BrowserRouter>
           <div className="total">
@@ -43,4 +39,6 @@ export default class extends Component {
   }
 }
 
-
+const mapStateToProps = ({main}) => ({main})
+const mapDispatchToProps = dispatch => ({resetImages: url => dispatch(resetImages(url))})
+export default connect(mapStateToProps, mapDispatchToProps)(App)
