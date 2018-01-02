@@ -12,7 +12,7 @@ import Main from './Main'
 
 class App extends Component {
 
-  async componentDidMount () {
+  componentDidMount () {
     this.props.resetImages('/api/set_images')
   }
 
