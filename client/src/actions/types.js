@@ -12,5 +12,6 @@ export default {
   REMOVE_FAVORITE: 'remove_favorite',
   REMOVE: 'remove',
   SHOW_FAVORITES: 'show_favorites',
-  UPDATE_PERSON: 'update_person'
+  UPDATE_PERSON: 'update_person',
+  OPEN_POPUP: 'open_popup'
 }

@@ -1,0 +1,51 @@
+$textShadow: 1px 1px 1px blue;
+$family: 'Krona One', sans-serif;
+.popup {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 2px solid black;
+}
+
+.popup_inner {
+  position: absolute;
+  text-align: center;
+  vertical-align: middle;
+  left: 31%;
+  right: 31%;
+  top: 17%;
+  bottom: 20%;
+  margin: auto;
+  background-color: whitesmoke;
+  text-shadow: $textShadow;
+  border-radius: 7pt;
+  animation-name: boxswitch;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  h2 {
+    margin-top: 5vh;
+    margin-bottom: 3vh;
+  }
+  img {
+    margin-bottom: -80px;
+    border: 2px solid black;
+    box-shadow: 6px 6px 2px 1px rgba(0, 0, 255, .2);
+  }
+  .actressText {
+    margin-top: 57px;
+    margin-bottom: -28px;
+    padding: 8%;
+    font-size: 1.7em;
+    font-family: $family;
+    p {
+      color: red;
+      margin: 10px 0 10px;
+    }
+  }
+}

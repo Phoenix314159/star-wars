@@ -31,6 +31,13 @@ export default (state = {}, action) => {
       const {payload: {data, planets}} = action
       return {...state, totalItems: data.length, term: '', data, planets}
     }
+    case types.OPEN_POPUP:
+      const {payload: {show}} = action
+      if(!show) {
+        return {...state, hide2: false}
+      }
+      return {...state, hide2: true}
+
     default:
       return state
   }

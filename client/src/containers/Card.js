@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { Link, withRouter } from 'react-router-dom'
 import * as actions from '../actions'
+import PopUp from '../components/PopUp'
 
 class Card extends Component {
 
@@ -46,8 +47,16 @@ class Card extends Component {
     )
   }
 
+  openPopUp = (index, image) => {
+    this.props.openPopUp(true, index, image)
+  }
+
+  closePopUp = () => {
+    this.props.openPopUp(false)
+  }
+
   render () {
-    const {people, planets, main: {favorite, imageUrl}} = this.props
+    const {people, planets, main: {favorite, imageUrl}, open: {show, index, image}} = this.props
     if (people.length === 0 || planets.length === 0) {
       return (
         <div className="noResults">
@@ -55,16 +64,27 @@ class Card extends Component {
         </div>
       )
     }
+    if (show) {
+      // const {year, actress, movie} = data[index]  //pull off properties of any index that is clicked
+      return (
+        <PopUp close={() => this.closePopUp()}
+               image={image}
+        />
+      )
+    }
     return (
       <div className="displayCards">
         {people.map((person, i) => {
           const {fields: {name, image, birth_year, homeworld, newImage, isImageUpdated}} = person
+          const characterImage = isImageUpdated ? newImage : `${imageUrl}/${image}`
           return (
             <div className='card' key={i}>
               <div className='card-content'>
                 <div className='card-name text-center'>{name}</div>
-                <img src={isImageUpdated ? newImage : `${imageUrl}/${image}`} alt='image url not found'
-                     style={{height: '150px', width: '150px'}}/>
+                <img src={characterImage} alt='image url not found'
+                     style={{height: '150px', width: '150px'}}
+                     onClick={() => this.openPopUp(i, characterImage)}
+                />
                 <p>
                   <span>Birthday:</span>
                   <span>{birth_year}</span>
@@ -90,11 +110,11 @@ class Card extends Component {
     )
   }
 }
-const mapStateToProps = ({main, paginate}) => ({main, paginate})
+const mapStateToProps = ({main, paginate, open}) => ({main, paginate, open})
 
 const mapDispatchToProps = dispatch => {
-  const {showEdit, hidePagBar, addFavorite, removeFavorite, removeFavorited} = actions
-  return bindActionCreators({showEdit, hidePagBar, addFavorite, removeFavorite, removeFavorited}, dispatch)
+  const {showEdit, hidePagBar, addFavorite, removeFavorite, removeFavorited, openPopUp} = actions
+  return bindActionCreators({showEdit, hidePagBar, addFavorite, removeFavorite, removeFavorited, openPopUp}, dispatch)
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Card))

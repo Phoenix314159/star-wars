@@ -1,3 +1,4 @@
+@import './PopUp.scss';
 $twinkling: 200s linear infinite;
 .total {
   background-image: -moz-radial-gradient(circle, #FFFFFF .2px, #C0C0C0 .2px, transparent 2.5px),
@@ -160,6 +161,7 @@ $twinkling: 200s linear infinite;
 .noFavorites {
   text-align: center;
   margin-top: 20vh;
+  color: whitesmoke;
   .noFavoritesButton {
     margin-right: auto;
     margin-left: auto;
