@@ -27,7 +27,6 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "review": "atom . && npm install && npm start"
+    "eject": "react-scripts eject"
   }
 }

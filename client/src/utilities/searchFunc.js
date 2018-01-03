@@ -1,10 +1,7 @@
 export default (data, term) => {
-  const arr = []
-  data.forEach(element => {
+  const regEx = new RegExp(term, 'gi')
+  return data.filter(element => {
     const {fields: {name}} = element
-    if (name.toLowerCase().includes(term, 0)) {
-      arr.push(element)
-    }
+    return name.replace(/\s/g,'').match(regEx)
   })
-  return arr
 }

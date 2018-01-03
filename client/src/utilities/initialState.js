@@ -5,12 +5,10 @@ export default {
     favorite: 0
   },
   paginate: {
-    page: 1,
-    boolean: false
+    page: 1
   },
   search: {
     term: '',
-    size: 5,
     totalItems: 82,
     hide: false
   }

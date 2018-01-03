@@ -2,7 +2,6 @@ import types from '../actions/types'
 import findFavorites from '../utilities/findFavorites'
 import removeFavorite from '../utilities/removeFavorite'
 import remove from '../utilities/remove'
-import newImageFunc from '../utilities/newImageFunc'
 
 export default (state = {}, action) => {
   const {type} = action
@@ -55,9 +54,8 @@ export default (state = {}, action) => {
       return {...state, people, person, planets, ok: false}
     }
     case types.UPDATE_PERSON: {
-      let {payload: {data, planets, newImage, person}} = action
-      data = newImageFunc(data, person)
-      return {...state, ok: true, people: data, planets, newImageUrl: newImage}
+      const {payload: {data, planets, newImage}} = action
+      return {...state, people: data, planets, newImageUrl: newImage, ok: true}
     }
     default:
       return state

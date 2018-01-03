@@ -12,8 +12,8 @@ class ShowEdit extends Component {
     const newName = this.nameArr[this.nameArr.length - 1],
       newImage = this.imageArr[this.imageArr.length - 1],
       newBirthday = this.birthdayArr[this.birthdayArr.length - 1],
-      {main: {planets, person}, paginate: {page}, edit: {newPlanet, id}, updatePerson} = this.props
-    updatePerson(newName, newImage, newBirthday, newPlanet, id, page, planets, person)
+      {main: {planets, person}, paginate: {page}, edit: {newPlanet, id}, search: {term}, updatePerson} = this.props
+    updatePerson(newName, newImage, newBirthday, newPlanet, id, page, planets, person, term)
   }
 
   selectedPlanet = e => {
@@ -66,6 +66,6 @@ class ShowEdit extends Component {
   }
 }
 
-const mapStateToProps = ({main, paginate, edit}) => ({main, paginate, edit})
+const mapStateToProps = ({main, paginate, edit, search}) => ({main, paginate, edit, search})
 const mapDispatchToProps = dispatch => (bindActionCreators({updatePerson, setNewPlanet}, dispatch))
 export default connect(mapStateToProps, mapDispatchToProps)(ShowEdit)

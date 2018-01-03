@@ -8,13 +8,14 @@ import * as actions from '../actions'
 class Card extends Component {
 
   getHomeWorldById (id) {
-    let {planets} = this.props, home
-    for (let i = 0; i < planets.length; i++) {
-      if (planets[i].pk === id) {
-        home = planets[i].fields.name
+    const {planets} = this.props, home = []
+    planets.forEach((element) => {
+      if (element.pk === id) {
+        const {fields: {name}} = element
+        home.push(name)
       }
-    }
-    return <span>{home}</span>
+    })
+    return <span>{home[0]}</span>
   }
 
   showEdit = person => {

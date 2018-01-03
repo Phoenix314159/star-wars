@@ -3,10 +3,20 @@
   border-radius: 10px;
   width: 300px;
   margin: auto;
+  font-size: 1.1em;
   -webkit-box-shadow: 7px 7px 5px 0px rgba(0, 0, 0, 0.49);
   -moz-box-shadow: 7px 7px 5px 0px rgba(0, 0, 0, 0.49);
   box-shadow: 7px 7px 5px 0px rgba(0, 0, 0, 0.49);
   background: #121212;
+  transition: all .6s ease-in-out;
+  &:hover {
+    transform: scale(1.1);
+    background-color: lightgrey;
+    border: 2px solid black;
+    border-radius: 7pt;
+    cursor: pointer;
+  }
+
   img {
     display: block;
     margin: 20px auto;
@@ -28,8 +38,8 @@
 .card-content {
   padding: 10px;
   background: #222;
-  margin: 15px 16px;
-  border-radius: 10px;
+  margin: 20px 20px;
+  border-radius: 7pt;
 }
 
 .card-name {
@@ -60,7 +70,7 @@
   h6 {
     margin-top: 2.5vh;
     margin-bottom: -0.5vh;
-    margin-left: .4vw;
+    margin-left:.9vw;
   }
   .selectPlanet {
     color: black;
@@ -72,17 +82,9 @@
   color: lightgrey;
   text-align: center;
   margin-top: 20vh;
-}
-
-.noResults button {
-  margin-top: 5vh;
-}
-
-.loading {
-  color: lightgrey;
-  text-align: center;
-  margin-top: 20vh;
-  font-size: 2em;
+  button {
+    margin-top: 5vh;
+  }
 }
 
 .favoriteHide {

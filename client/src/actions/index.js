@@ -37,18 +37,17 @@ export const getImageUrl = url => async dispatch => {
 }
 
 export const updatePerson = (newName, newImage, newBirthday, newPlanet,
-                             id, page, planets, person) => async dispatch => {
+                             id, page, planets, person, term) => async dispatch => {
   const obj = {
     name: newName,
     image: newImage,
     birth_year: newBirthday,
     homeworld: newPlanet
   }
-  await axios.put(`${'/api/update_person'}?id=${id}`, obj)
-  const {data: {data}} = await axios.get('/api/get_people_data')
+  const {data: {data}} = await axios.put(`${'/api/update_person'}?id=${id}`, obj)
   return dispatch({
     type: types.UPDATE_PERSON,
-    payload: {data, planets, page, newImage, person}
+    payload: {data, planets, page, newImage, person, term}
   })
 }
 

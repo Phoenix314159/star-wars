@@ -35,7 +35,7 @@ class App extends Component {
         </BrowserRouter>
       )
     }
-    return <div className="initialLoading">Loading...</div>
+    return <h1 className="initialLoading">Loading...</h1>
   }
 }
 

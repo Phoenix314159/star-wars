@@ -1,5 +1,5 @@
 export default (people, name) => {
-  let arr = []
+  const arr = []
   people.forEach(element => {
     const {fields, pk} = element
     if (fields.name === name) {

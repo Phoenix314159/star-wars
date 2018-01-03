@@ -112,8 +112,6 @@ $twinkling: 200s linear infinite;
   }
 }
 
-
-
 .content {
   max-width: 1633px;
   margin: auto;
@@ -154,7 +152,7 @@ $twinkling: 200s linear infinite;
 .favoriteCount {
   position: absolute;
   top: 20.5vh;
-  right: 32vw;
+  right: 31.6vw;
   height: 50px;
   width: 50px;
   background-color: lightgrey;
@@ -173,7 +171,7 @@ $twinkling: 200s linear infinite;
 
 .noFavorites {
   text-align: center;
-  margin-top: 13vh;
+  margin-top: 20vh;
   .noFavoritesButton {
     margin-right: auto;
     margin-left: auto;
@@ -192,7 +190,6 @@ $twinkling: 200s linear infinite;
   color: whitesmoke;
   text-align: center;
   margin-top: 51.7vh;
-  font-size: 2em;
 }
 
 
