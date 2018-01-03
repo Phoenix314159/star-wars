@@ -14,9 +14,11 @@ module.exports = app => {
       }
       if (birth_year) setObj['data.$.fields.birth_year'] = birth_year
       if (homeworld) setObj['data.$.fields.homeworld'] = homeworld
-      await People.update({'data.pk': id}, {'$set': setObj})
-      const [data] = await People.find({})
-      res.status(200).send(data)
+      const {nModified} = await People.update({'data.pk': id}, {'$set': setObj})
+      if(nModified === 1) {
+        const [data] = await People.find({})
+        res.status(200).send(data)
+      }
     }
     catch (err) {
       console.log(err)

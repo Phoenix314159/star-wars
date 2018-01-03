@@ -118,8 +118,8 @@ $twinkling: 200s linear infinite;
   padding: 20px;
   button {
     position: absolute;
-    top: 27.5vh;
-    right: 29.5vw;
+    top: 26.6vh;
+    right: 46.6vw;
   }
 }
 
@@ -129,30 +129,18 @@ $twinkling: 200s linear infinite;
   margin-bottom: 5vh;
 }
 
-.interview-text {
-  height: 5vh;
-  display: block;
-  color: #fff;
-  font-family: "ITC Serif Gothic", Lato;
-  font-size: 2.25em;
-  left: -2em;
-  letter-spacing: 0.4em;
-  right: -2em;;
-  text-transform: uppercase;
-  top: 29%;
-}
-
 .pagContainer {
   display: flex;
   justify-content: center;
   margin-top: 8vh;
   margin-bottom: 2vh;
+  font-size: 1.5em;
 }
 
 .favoriteCount {
   position: absolute;
-  top: 20.5vh;
-  right: 31.6vw;
+  top: 20.3vh;
+  right: 32.6vw;
   height: 50px;
   width: 50px;
   background-color: lightgrey;
@@ -180,10 +168,9 @@ $twinkling: 200s linear infinite;
 }
 
 .homeButton {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 4vh;
-  margin-top: -4vh;
+  position: absolute;
+  top: 26.6vh;
+  right: 48.5vw;
 }
 
 .initialLoading {

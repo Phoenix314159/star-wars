@@ -47,7 +47,7 @@ export default (state = {}, action) => {
     case types.SHOW_FAVORITES: {
       let {payload: {people, planets}} = action
       people = findFavorites(people)
-      return {...state, people, planets, hideButton: false, initialLoad: false}
+      return {...state, people, planets, hideButton: false, showButton: false, initialLoad: false}
     }
     case types.SHOW_EDIT: {
       const {payload: {people, person, planets}} = action

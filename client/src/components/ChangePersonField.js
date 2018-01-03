@@ -49,7 +49,7 @@ export default ({people, planets, name, image, newPersonName, newPersonImage, ne
             <div className="editPerson">
               <button className={showSaveButton} type="submit">Save</button>
               <Link to="/main">
-                <button className={showCancelButton}>Back</button>
+                <button className={showCancelButton}>Cancel</button>
               </Link>
               <Link to="/">
                 <button className={showOkButton}>OK</button>
