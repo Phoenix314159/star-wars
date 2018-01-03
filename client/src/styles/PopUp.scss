@@ -1,4 +1,4 @@
-$textShadow: 1px 1px 1px blue;
+$textShadow: 1px 1px 1px white;
 $family: 'Krona One', sans-serif;
 .popup {
   position: fixed;
@@ -22,30 +22,31 @@ $family: 'Krona One', sans-serif;
   top: 17%;
   bottom: 20%;
   margin: auto;
-  background-color: whitesmoke;
+  background-image: url('../images/star-wars-background.jpg');
   text-shadow: $textShadow;
   border-radius: 7pt;
   animation-name: boxswitch;
   animation-duration: 5s;
   animation-iteration-count: infinite;
   h2 {
-    margin-top: 5vh;
+    margin-top: 2vh;
     margin-bottom: 3vh;
+    color: black;
   }
-  img {
-    margin-bottom: -80px;
+  .characterPicture {
+    width: 254px;
+    margin-left: auto;
+    margin-right: auto;
     border: 2px solid black;
-    box-shadow: 6px 6px 2px 1px rgba(0, 0, 255, .2);
+    border-radius: 7pt;
+    box-shadow: 6px 6px 2px 1px black;
   }
-  .actressText {
-    margin-top: 57px;
-    margin-bottom: -28px;
-    padding: 8%;
-    font-size: 1.7em;
-    font-family: $family;
-    p {
-      color: red;
-      margin: 10px 0 10px;
-    }
+  .characterInfo {
+    color: black;
+    font-size: 1.8em;
+    margin-top: 5vh;
+  }
+  button {
+    margin-top: 4vh;
   }
 }

@@ -47,8 +47,8 @@ class Card extends Component {
     )
   }
 
-  openPopUp = (index, image) => {
-    this.props.openPopUp(true, index, image)
+  openPopUp = (index, name, image, homeWorld) => {
+    this.props.openPopUp(true, index, name, image, homeWorld)
   }
 
   closePopUp = () => {
@@ -56,7 +56,7 @@ class Card extends Component {
   }
 
   render () {
-    const {people, planets, main: {favorite, imageUrl}, open: {show, index, image}} = this.props
+    const {people, planets, main: {favorite, imageUrl}, open: {show, index, name, image, homeWorld}} = this.props
     if (people.length === 0 || planets.length === 0) {
       return (
         <div className="noResults">
@@ -65,10 +65,11 @@ class Card extends Component {
       )
     }
     if (show) {
-      // const {year, actress, movie} = data[index]  //pull off properties of any index that is clicked
       return (
         <PopUp close={() => this.closePopUp()}
                image={image}
+               name={name}
+               homeWorld={homeWorld}
         />
       )
     }
@@ -77,13 +78,14 @@ class Card extends Component {
         {people.map((person, i) => {
           const {fields: {name, image, birth_year, homeworld, newImage, isImageUpdated}} = person
           const characterImage = isImageUpdated ? newImage : `${imageUrl}/${image}`
+          const homeWorldName = this.getHomeWorldById(homeworld)
           return (
             <div className='card' key={i}>
               <div className='card-content'>
                 <div className='card-name text-center'>{name}</div>
                 <img src={characterImage} alt='image url not found'
                      style={{height: '150px', width: '150px'}}
-                     onClick={() => this.openPopUp(i, characterImage)}
+                     onClick={() => this.openPopUp(i, name, characterImage, homeWorldName)}
                 />
                 <p>
                   <span>Birthday:</span>
@@ -91,7 +93,7 @@ class Card extends Component {
                 </p>
                 <p>
                   <span>Homeworld:</span>
-                  {this.getHomeWorldById(homeworld)}
+                  {homeWorldName}
                 </p>
                 <div className="editPerson">
                   <Link to="/edit">
