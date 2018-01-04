@@ -113,10 +113,10 @@ export const removeFavorited = (people, person, page, favorite) => (
   }
 )
 
-export const openPopUp = (show, index, name, image, homeWorld) => (
+export const openPopUp = (show, index, name, image, homeWorld, info) => (
   {
     type: types.OPEN_POPUP,
-    payload: {show, index, name, image, homeWorld}
+    payload: {show, index, name, image, homeWorld, info}
   }
 )
 

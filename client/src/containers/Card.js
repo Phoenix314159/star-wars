@@ -47,8 +47,8 @@ class Card extends Component {
     )
   }
 
-  openPopUp = (index, name, image, homeWorld) => {
-    this.props.openPopUp(true, index, name, image, homeWorld)
+  openPopUp = (index, name, image, homeWorld, info) => {
+    this.props.openPopUp(true, index, name, image, homeWorld, info)
   }
 
   closePopUp = () => {
@@ -56,7 +56,7 @@ class Card extends Component {
   }
 
   render () {
-    const {people, planets, main: {favorite, imageUrl}, open: {show, index, name, image, homeWorld}} = this.props
+    const {people, planets, main: {favorite, imageUrl}, open: {show, name, image, homeWorld, info}} = this.props
     if (people.length === 0 || planets.length === 0) {
       return (
         <div className="noResults">
@@ -70,13 +70,14 @@ class Card extends Component {
                image={image}
                name={name}
                homeWorld={homeWorld}
+               info={info}
         />
       )
     }
     return (
       <div className="displayCards">
         {people.map((person, i) => {
-          const {fields: {name, image, birth_year, homeworld, newImage, isImageUpdated}} = person
+          const {fields: {name, image, birth_year, homeworld, newImage, isImageUpdated, info}} = person
           const characterImage = isImageUpdated ? newImage : `${imageUrl}/${image}`
           const homeWorldName = this.getHomeWorldById(homeworld)
           return (
@@ -85,7 +86,7 @@ class Card extends Component {
                 <div className='card-name text-center'>{name}</div>
                 <img src={characterImage} alt='image url not found'
                      style={{height: '150px', width: '150px'}}
-                     onClick={() => this.openPopUp(i, name, characterImage, homeWorldName)}
+                     onClick={() => this.openPopUp(i, name, characterImage, homeWorldName, info)}
                 />
                 <p>
                   <span>Birthday:</span>
