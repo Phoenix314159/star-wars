@@ -3,9 +3,12 @@ import types from '../actions/types'
 export default (state = {}, action) => {
   const {type} = action
   switch (type) {
-    case types.OPEN_POPUP:  //on popUp close, state.open.pageNum = -1
-      const {payload: {show, index, name, image, homeWorld, info}} = action
-      return {...state, show, index, name, image, homeWorld, info}
+    case types.OPEN_POPUP:
+      const {payload: {show, index, name, image, info}} = action
+      if(!show) {
+        return {...state, show, starWarsHide: false}
+      }
+      return {...state, show, index, name, image, info, starWarsHide: true}
     default:
       return state
   }

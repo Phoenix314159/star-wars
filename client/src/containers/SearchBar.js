@@ -16,13 +16,15 @@ class SearchBar extends Component {
   }
 
   render () {
-    const {search: {term}} = this.props
+    const {search: {term}, starWarsHide} = this.props
     return (
-      <div className='search-bar'>
-        <input placeholder='Search Your Destiny'
-               value={term}
-               onChange={e => this.onInputChange(e.target.value)}
-        />
+      <div className={starWarsHide}>
+        <div className='search-bar'>
+          <input placeholder='Search Your Destiny'
+                 value={term}
+                 onChange={e => this.onInputChange(e.target.value)}
+          />
+        </div>
       </div>
     )
   }

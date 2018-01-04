@@ -47,8 +47,8 @@ class Card extends Component {
     )
   }
 
-  openPopUp = (index, name, image, homeWorld, info) => {
-    this.props.openPopUp(true, index, name, image, homeWorld, info)
+  openPopUp = (index, name, image, info) => {
+    this.props.openPopUp(true, index, name, image, info)
   }
 
   closePopUp = () => {
@@ -56,7 +56,7 @@ class Card extends Component {
   }
 
   render () {
-    const {people, planets, main: {favorite, imageUrl}, open: {show, name, image, homeWorld, info}} = this.props
+    const {people, planets, main: {favorite, imageUrl}, open: {show, name, image, info}} = this.props
     if (people.length === 0 || planets.length === 0) {
       return (
         <div className="noResults">
@@ -66,10 +66,9 @@ class Card extends Component {
     }
     if (show) {
       return (
-        <PopUp close={() => this.closePopUp()}
+        <PopUp close={this.closePopUp}
                image={image}
                name={name}
-               homeWorld={homeWorld}
                info={info}
         />
       )
@@ -86,7 +85,7 @@ class Card extends Component {
                 <div className='card-name text-center'>{name}</div>
                 <img src={characterImage} alt='image url not found'
                      style={{height: '150px', width: '150px'}}
-                     onClick={() => this.openPopUp(i, name, characterImage, homeWorldName, info)}
+                     onClick={() => this.openPopUp(i, name, characterImage, info)}
                 />
                 <p>
                   <span>Birthday:</span>

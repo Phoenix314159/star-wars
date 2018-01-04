@@ -7,26 +7,32 @@ import star from '../images/star.svg'
 import wars from '../images/wars.svg'
 import SearchBar from './SearchBar'
 
-const TopSection = ({main: {people, planets, favorite, hideButton, showButton}, paginate: {page}, showFavorites}) => {
+const TopSection = ({
+                      main: {people, planets, favorite, hideButton, showButton},
+                      paginate: {page}, open: {starWarsHide}, showFavorites
+                    }) => {
   const homeButtonStyle = hideButton ? 'pagHide' : 'homeButton'
   const showFavoritesButtonStyle = showButton ? 'btn btn-default' : 'pagHide'
+  const starWars = starWarsHide ? 'pagHide' : ''
   return (
     <div>
       <div className='content'>
         <div className='logo'>
-          <img src={star} alt="star-logo"/>
-          <img src={wars} alt="wars-logo"/>
-          <div className="favoriteCount">
-            <div>{favorite}</div>
+          <div className={starWars}>
+            <img src={star} alt="star-logo"/>
+            <img src={wars} alt="wars-logo"/>
+            <div className="favoriteCount">
+              <div>{favorite}</div>
+            </div>
+            <Link to="/favorites">
+              <button className={showFavoritesButtonStyle}
+                      onClick={() => showFavorites(people, planets, page)}>
+                Show Favorites
+              </button>
+            </Link>
           </div>
-          <Link to="/favorites">
-            <button className={showFavoritesButtonStyle}
-                    onClick={() => showFavorites(people, planets, page)}>
-              Show Favorites
-            </button>
-          </Link>
         </div>
-        <SearchBar/>
+        <SearchBar starWarsHide={starWars}/>
       </div>
       <div className={homeButtonStyle}>
         <Link to="/">
@@ -37,6 +43,6 @@ const TopSection = ({main: {people, planets, favorite, hideButton, showButton}, 
   )
 }
 
-const mapStateToProps = ({main, paginate}) => ({main, paginate})
+const mapStateToProps = ({main, paginate, open}) => ({main, paginate, open})
 const mapDispatchToProps = dispatch => (bindActionCreators({showFavorites}, dispatch))
 export default connect(mapStateToProps, mapDispatchToProps)(TopSection)

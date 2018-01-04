@@ -11,5 +11,8 @@ export default {
     term: '',
     totalItems: 82,
     hide: false
+  },
+  open: {
+    starWarsHide: false
   }
 }
