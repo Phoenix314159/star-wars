@@ -41,6 +41,10 @@
   background: #222;
   margin: 20px 20px;
   border-radius: 7pt;
+  img{
+    height: 150px;
+    width: 150px;
+  }
 }
 
 .card-name {
@@ -95,6 +99,10 @@
   color: whitesmoke;
   text-align: center;
   margin-top: 20vh;
+}
+
+@media (min-width: 425px) and (max-width: 1550px) {
+
 }
 
 

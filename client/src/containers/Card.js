@@ -1,4 +1,3 @@
-import '../styles/Card.scss'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -86,7 +85,6 @@ class Card extends Component {
               <div className='card-content'>
                 <div className='card-name text-center'>{name}</div>
                 <img src={characterImage} alt='image url not found'
-                     style={{height: '150px', width: '150px'}}
                      onClick={() => this.openPopUp(i, name, characterImage, info)}
                 />
                 <p>

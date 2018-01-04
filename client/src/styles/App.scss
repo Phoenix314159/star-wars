@@ -1,4 +1,5 @@
 @import './PopUp.scss';
+@import './Card.scss';
 $twinkling: 200s linear infinite;
 .total {
   background-image: -moz-radial-gradient(circle, #FFFFFF .2px, #C0C0C0 .2px, transparent 2.5px),
@@ -179,6 +180,56 @@ $twinkling: 200s linear infinite;
   color: whitesmoke;
   text-align: center;
   margin-top: 51.7vh;
+}
+
+@media (min-width: 1550px) and (max-width: 1919px) {
+
+  .popUpContent {
+    .popUpButton {
+      position: absolute;
+      bottom: 25px;
+      right: 47%;
+    }
+
+  }
+  .characterInfo {
+    font-size: 1em;
+  }
+}
+
+@media (min-width: 1500px) and (max-width: 1550px) {
+
+  .pagContainer {
+    font-size: 1.2em;
+  }
+  .displayCards {
+    max-width: 1470px;
+  }
+  .card {
+    width: 280px;
+    margin: auto;
+    font-size: 1em;
+  }
+}
+@media (min-width: 425px) and (max-width: 1499px) {
+  .pagContainer {
+    font-size: 1.2em;
+    margin-top: 6vh;
+  }
+  .displayCards {
+    max-width: 1390px;
+  }
+  .card {
+    width: 260px;
+    margin: auto;
+    font-size: 1em;
+  }
+  .card-content {
+    img {
+      height: 119px;
+      width: 119px;
+    }
+  }
 }
 
 
