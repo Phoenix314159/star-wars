@@ -7,13 +7,12 @@ import star from '../images/star.svg'
 import wars from '../images/wars.svg'
 import SearchBar from './SearchBar'
 
-const TopSection = ({
-                      main: {people, planets, favorite, hideButton, showButton},
-                      paginate: {page}, open: {starWarsHide}, showFavorites
-                    }) => {
-  const homeButtonStyle = hideButton ? 'pagHide' : 'homeButton'
-  const showFavoritesButtonStyle = showButton ? 'btn btn-default' : 'pagHide'
-  const starWars = starWarsHide ? 'pagHide' : ''
+const TopSection = ({main: {people, planets, favorite, hideButton, showButton},
+                      paginate: {page}, open: {starWarsHide}, showFavorites}) => {
+  const homeButtonStyle = hideButton ? 'pagHide' : 'homeButton',
+    showFavoritesButtonStyle = showButton ? 'btn btn-default' : 'pagHide',
+    starWars = starWarsHide ? 'pagHide' : '',
+    showFavoriteCount = favorite === 0 ? '' : favorite
   return (
     <div>
       <div className='content'>
@@ -22,7 +21,7 @@ const TopSection = ({
             <img src={star} alt="star-logo"/>
             <img src={wars} alt="wars-logo"/>
             <div className="favoriteCount">
-              <div>{favorite}</div>
+              <div>{showFavoriteCount}</div>
             </div>
             <Link to="/favorites">
               <button className={showFavoritesButtonStyle}
