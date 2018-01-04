@@ -42,7 +42,7 @@ export default (state = {}, action) => {
       let {payload: {people, person, favorite}} = action
       favorite -= 1
       people = remove(people, person)
-      return {...state, people, favorite}
+      return {...state, favorite}
     }
     case types.SHOW_FAVORITES: {
       let {payload: {people, planets}} = action

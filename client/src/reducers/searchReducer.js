@@ -2,6 +2,7 @@ import types from '../actions/types'
 import searchFunc from '../utilities/searchFunc'
 import searchPlanets from '../utilities/searchPlanets'
 import findFavorites from '../utilities/findFavorites'
+import remove from '../utilities/remove'
 
 export default (state = {}, action) => {
   const {type} = action
@@ -30,6 +31,10 @@ export default (state = {}, action) => {
     case types.UPDATE_PERSON: {
       const {payload: {data, planets}} = action
       return {...state, totalItems: data.length, term: '', data, planets}
+    }
+    case types.REMOVE: {
+      let {payload: {people}} = action
+      return {...state, totalItems: people.length}
     }
     case types.OPEN_POPUP:
       const {payload: {show}} = action

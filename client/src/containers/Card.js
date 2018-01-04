@@ -26,8 +26,10 @@ class Card extends Component {
   }
 
   addFavorite = (person, favorite) => {
-    if (person.isFavorite) return
-    this.props.addFavorite(person, favorite)
+    const {history: {location: {pathname}}, addFavorite} = this.props
+    const {isFavorite} = person
+    if (isFavorite || pathname === '/favorites') return
+    addFavorite(person, favorite)
   }
 
   onClick = (p) => {
