@@ -95,7 +95,7 @@ class Card extends Component {
                   <span>Homeworld:</span>
                   {homeWorldName}
                 </p>
-                <div className="editPerson">
+                <div className="editButtons">
                   <Link to="/edit">
                     <button className="btn btn-default" onClick={() => this.showEdit(person)}>Edit</button>
                   </Link>
