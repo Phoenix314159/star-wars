@@ -14,5 +14,6 @@ export default {
   SHOW_FAVORITES: 'show_favorites',
   UPDATE_PERSON: 'update_person',
   OPEN_POPUP: 'open_popup',
-  MOUSE_OVER: 'mouse_over'
+  MOUSE_OVER: 'mouse_over',
+  SHOW_BUTTON: 'show_button'
 }

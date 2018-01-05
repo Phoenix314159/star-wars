@@ -2,7 +2,7 @@ import React from 'react'
 import ChangeHomeWorld from './ChangeHomeWorld'
 import { Link } from 'react-router-dom'
 
-export default ({people, planets, name, image, newPersonName, newPersonImage, newPersonBirthday,
+export default ({people, planets, name, image, newPersonName, newPersonImage, newPersonBirthday, showFavoritesButton,
                   handleChange, selectedPlanet, handleSubmit, ok, imageUrl, newImage, isImageUpdated}) => {
   const showOkButton = ok ? 'btn btn-primary' : 'pagHide'
   const showSaveButton = ok ? 'pagHide' : 'btn btn-primary'
@@ -12,7 +12,7 @@ export default ({people, planets, name, image, newPersonName, newPersonImage, ne
         <div className='card-content'>
           <form onSubmit={handleSubmit}>
             <h4 className="text-center">{name}</h4>
-            <img src={isImageUpdated ? newImage : `${imageUrl}/${image}`} alt='image url not found'
+            <img src={isImageUpdated ? newImage : `${imageUrl}/${image}`} alt=''
                  style={{height: '80px', width: '80px'}}/>
             <input type="text"
                    className="form-control newInputs"
@@ -40,7 +40,8 @@ export default ({people, planets, name, image, newPersonName, newPersonImage, ne
             <div className="editButtons">
               <button className={showSaveButton} type="submit">Save</button>
               <Link to="/main">
-                <button className={showCancelButton}>Cancel</button>
+                <button className={showCancelButton}
+                        onClick={() => showFavoritesButton()}>Cancel</button>
               </Link>
             </div>
             <div className="okContainer">

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { updatePerson, setNewPlanet } from '../actions'
+import { updatePerson, setNewPlanet, showFavoritesButton } from '../actions'
 import ChangePersonField from '../components/ChangePersonField'
 import Main from './Main'
 
@@ -54,7 +54,8 @@ class ShowEdit extends Component {
           spinner={null}
           handleSubmit={this.handleSubmit}
           selectedPlanet={this.selectedPlanet}
-          handleChange={this.changeInfo}/>
+          handleChange={this.changeInfo}
+          showFavoritesButton={this.props.showFavoritesButton}/>
       )
     }
     return (
@@ -65,5 +66,5 @@ class ShowEdit extends Component {
 }
 
 const mapStateToProps = ({main, paginate, edit, search}) => ({main, paginate, edit, search})
-const mapDispatchToProps = dispatch => (bindActionCreators({updatePerson, setNewPlanet}, dispatch))
+const mapDispatchToProps = dispatch => (bindActionCreators({updatePerson, setNewPlanet, showFavoritesButton}, dispatch))
 export default connect(mapStateToProps, mapDispatchToProps)(ShowEdit)

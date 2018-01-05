@@ -3,8 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 import { showFavorites } from '../actions'
-import star from '../images/star.svg'
-import wars from '../images/wars.svg'
+import starWarsLogo from '../images/star-wars-logo.png'
 import SearchBar from './SearchBar'
 
 const TopSection = ({main: {people, planets, favorite, hideButton, showButton},
@@ -18,8 +17,7 @@ const TopSection = ({main: {people, planets, favorite, hideButton, showButton},
       <div className='content'>
         <div className='logo'>
           <div className={starWars}>
-            <img src={star} alt="star-logo"/>
-            <img src={wars} alt="wars-logo"/>
+            <img src={starWarsLogo} alt=""/>
             <div className="favoriteCount">
               <div>{showFavoriteCount}</div>
             </div>

@@ -51,7 +51,7 @@ export default (state = {}, action) => {
     }
     case types.SHOW_EDIT: {
       const {payload: {people, person, planets}} = action
-      return {...state, people, person, planets, ok: false}
+      return {...state, people, person, planets, ok: false, showButton: false}
     }
     case types.UPDATE_PERSON: {
       const {payload: {data, planets, newImage}} = action
@@ -60,6 +60,9 @@ export default (state = {}, action) => {
     case types.MOUSE_OVER: {
       const {payload: {boolean}} = action
       return {...state, hover: boolean}
+    }
+    case types.SHOW_BUTTON: {
+      return {...state, showButton: true}
     }
     default:
       return state

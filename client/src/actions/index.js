@@ -126,6 +126,12 @@ export const onMouseOver = boolean => (
   }
 )
 
+export const showFavoritesButton = () => (
+  {
+    type: types.SHOW_BUTTON
+  }
+)
+
 
 
 

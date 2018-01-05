@@ -72,7 +72,7 @@ class Card extends Component {
                  onMouseLeave={() => this.onMouseOver(false)}>
               <div className='card-content'>
                 <div className='card-name text-center'>{name}</div>
-                <img src={characterImage} alt='image url not found'
+                <img src={characterImage} alt=''
                      onClick={() => this.openPopUp(i, name, characterImage, info)}/>
                 <p>
                   <span>Birthday:</span>
