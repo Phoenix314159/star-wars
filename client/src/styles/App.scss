@@ -183,17 +183,17 @@ $twinkling: 200s linear infinite;
 }
 
 @media (min-width: 1550px) and (max-width: 1919px) {
-
-  .popUpContent {
+  .popup_inner {
+    .popUpContent {
+      .characterInfo {
+        font-size: 1.4em;
+      }
+    }
     .popUpButton {
       position: absolute;
-      bottom: 25px;
+      bottom: 30px;
       right: 47%;
     }
-
-  }
-  .characterInfo {
-    font-size: 1em;
   }
 }
 
@@ -210,8 +210,16 @@ $twinkling: 200s linear infinite;
     margin: auto;
     font-size: 1em;
   }
+  .popup_inner {
+    .popUpContent {
+      .characterInfo {
+        font-size: 1.2em;
+      }
+    }
+  }
 }
-@media (min-width: 425px) and (max-width: 1499px) {
+
+@media (min-width: 1260px) and (max-width: 1500px) {
   .pagContainer {
     font-size: 1.2em;
     margin-top: 6vh;
@@ -230,6 +238,35 @@ $twinkling: 200s linear infinite;
       width: 119px;
     }
   }
+  .popup_inner {
+    .popUpContent {
+      .characterInfo {
+        font-size: 1.2em;
+      }
+    }
+  }
 }
+
+@media (min-width: 425px) and (max-width: 1260px) {
+  .popup_inner {
+    position: absolute;
+    bottom: 28.5%;
+    img {
+      height: 200px;
+      width: 200px;
+    }
+
+    .popUpContent {
+      height: 54vh;
+       .characterInfo {
+         font-size: 1em;
+       }
+     }
+  }
+
+
+}
+
+
 
 

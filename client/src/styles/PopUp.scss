@@ -39,9 +39,12 @@ $color: whitesmoke;
   &:hover {
     cursor: pointer;
   }
+  img {
+    height:250px;
+    width: 250px;
+  }
 
   .characterPicture {
-    width: 254px;
     border-radius: 2px;
     border: solid 1px #444;
     box-shadow: 6px 6px 2px 1px black;

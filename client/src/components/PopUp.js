@@ -5,8 +5,7 @@ export default ({image, name, info, close}) => (
     <div className='popup_inner'>
       <div className="popUpContent">
         <h2 className="card-name text-center">{name}</h2>
-        <img src={image} className="characterPicture"
-             height="250px" width="250px" alt=""/>
+        <img src={image} className="characterPicture" alt=""/>
         <div className="characterInfo">
           {`${name} ${info}`}
         </div>
