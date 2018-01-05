@@ -105,12 +105,11 @@
 }
 
 .noResults {
-  color: lightgrey;
+  color: whitesmoke;
   text-align: center;
-  margin-top: 20vh;
-  button {
-    margin-top: 5vh;
-  }
+  position: absolute;
+  left: 42.5vw;
+  top: 45vh;
 }
 
 .favoriteHide {

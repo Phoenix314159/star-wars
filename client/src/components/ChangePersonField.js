@@ -2,10 +2,8 @@ import React from 'react'
 import ChangeHomeWorld from './ChangeHomeWorld'
 import { Link } from 'react-router-dom'
 
-export default ({
-                  people, planets, name, image, newPersonName, newPersonImage, newPersonBirthday,
-                  handleChange, selectedPlanet, handleSubmit, ok, imageUrl, newImage, isImageUpdated
-                }) => {
+export default ({people, planets, name, image, newPersonName, newPersonImage, newPersonBirthday,
+                  handleChange, selectedPlanet, handleSubmit, ok, imageUrl, newImage, isImageUpdated}) => {
   const showOkButton = ok ? 'btn btn-primary' : 'pagHide'
   const showSaveButton = ok ? 'pagHide' : 'btn btn-primary'
   const showCancelButton = ok ? 'pagHide' : 'btn btn-danger'
