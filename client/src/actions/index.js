@@ -126,9 +126,10 @@ export const onMouseOver = boolean => (
   }
 )
 
-export const showFavoritesButton = () => (
+export const showFavoritesButton = boolean => (
   {
-    type: types.SHOW_BUTTON
+    type: types.SHOW_BUTTON,
+    payload: {boolean}
   }
 )
 

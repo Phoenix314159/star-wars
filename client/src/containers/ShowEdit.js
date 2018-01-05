@@ -36,6 +36,13 @@ class ShowEdit extends Component {
       this.birthdayArr.push(value)
     }
   }
+  showFavoritesButton = () => {
+    const {showFavoritesButton, match: {path}, main: {favorite}} = this.props
+    if(path === '/edit' && favorite > 0) {
+      return showFavoritesButton(true)
+    }
+    return showFavoritesButton(false)
+  }
 
   render () {
     const {main: {people, planets, person, ok, imageUrl}} = this.props
@@ -55,7 +62,7 @@ class ShowEdit extends Component {
           handleSubmit={this.handleSubmit}
           selectedPlanet={this.selectedPlanet}
           handleChange={this.changeInfo}
-          showFavoritesButton={this.props.showFavoritesButton}/>
+          showFavoritesButton={this.showFavoritesButton}/>
       )
     }
     return (
