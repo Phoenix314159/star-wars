@@ -10,7 +10,7 @@ export default ({
   const showSaveButton = ok ? 'pagHide' : 'btn btn-primary'
   const showCancelButton = ok ? 'pagHide' : 'btn btn-danger'
   return (
-    <div className="card">
+    <div className="card" style={{marginTop: '-4vh'}}>
         <div className='card-content'>
           <form onSubmit={handleSubmit}>
             <h4 className="text-center">{name}</h4>
