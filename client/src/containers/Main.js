@@ -3,8 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { withRouter } from 'react-router-dom'
 import { paginateFunc } from '../actions'
-import Card from './Card'
-import PagBar from './PagBar'
+import CardBar from '../components/CardBar'
 
 class Main extends Component {
 
@@ -14,36 +13,30 @@ class Main extends Component {
   }
 
   render () {
-    const {history: {location: {pathname}}} = this.props
+    const {history: {location: {pathname}}, paginate: {subData1, subData2, page}} = this.props
     if (pathname === '/main') {
-      const {main: {people, planets}, paginate: {subData1, subData2, page}, search: {term, data, planetData}} = this.props
+      const {main: {people, planets}, search: {term, data, planetData}} = this.props
       if (term !== '') {
         return (
-          <div>
-            <Card people={page !== 1 ? subData1 : data.slice(0, 5)}
-                  planets={page !== 1 ? subData2 : planetData}
-            />
-            <PagBar handlePageChange={this.handlePageChange}/>
-          </div>
+          <CardBar people={page !== 1 ? subData1 : data.slice(0, 5)}
+                   planets={page !== 1 ? subData2 : planetData}
+                   handlePageChange={this.handlePageChange}
+          />
         )
       }
       return (
-        <div>
-          <Card people={page !== 1 ? subData1 : people.slice(0, 5)}
-                planets={page !== 1 ? subData2 : planets}
-          />
-          <PagBar handlePageChange={this.handlePageChange}/>
-        </div>
+        <CardBar people={page !== 1 ? subData1 : people.slice(0, 5)}
+                 planets={page !== 1 ? subData2 : planets}
+                 handlePageChange={this.handlePageChange}
+        />
       )
     }
-    const {people, planets, paginate: {subData1, subData2, page}} = this.props
+    const {people, planets} = this.props
     return (
-      <div>
-        <Card people={page !== 1 ? subData1 : people.slice(0, 5)}
-              planets={page !== 1 ? subData2 : planets}
-        />
-        <PagBar handlePageChange={this.handlePageChange}/>
-      </div>
+      <CardBar people={page !== 1 ? subData1 : people.slice(0, 5)}
+               planets={page !== 1 ? subData2 : planets}
+               handlePageChange={this.handlePageChange}
+      />
     )
   }
 }

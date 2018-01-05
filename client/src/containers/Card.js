@@ -4,19 +4,10 @@ import { bindActionCreators } from 'redux'
 import { Link, withRouter } from 'react-router-dom'
 import * as actions from '../actions'
 import PopUp from '../components/PopUp'
+import getHomeWorldById from '../utilities/getHomeWorldById'
+import RenderRemoveButton from '../components/RenderRemoveButton'
 
 class Card extends Component {
-
-  getHomeWorldById (id) {
-    const {planets} = this.props, home = []
-    planets.forEach((element) => {
-      if (element.pk === id) {
-        const {fields: {name}} = element
-        home.push(name)
-      }
-    })
-    return <span>{home[0]}</span>
-  }
 
   showEdit = person => {
     const {main: {people, planets}, showEdit, hidePagBar} = this.props
@@ -40,14 +31,6 @@ class Card extends Component {
     return removeFavorite(p, favorite, people)
   }
 
-  renderRemoveButton = p => {
-    const {isFavorite} = p
-    return (
-      <button className={isFavorite ? 'btn btn-danger' : 'favoriteHide'}
-              onClick={() => this.onClick(p) }>X</button>
-    )
-  }
-
   openPopUp = (index, name, image, info) => {
     this.props.openPopUp(true, index, name, image, info)
   }
@@ -56,8 +39,21 @@ class Card extends Component {
     this.props.openPopUp(false)
   }
 
+  onMouseOver = boolean => {
+    this.props.onMouseOver(boolean)
+  }
+
+  onMouseOverStyle = str => {
+    const {match: {path}} = this.props
+    if(path === '/favorites') return {maxWidth: '1650px'}
+    return {
+      maxWidth: str,
+      transitionDuration: '.9s'
+    }
+  }
+
   render () {
-    const {people, planets, main: {favorite, imageUrl}, open: {show, name, image, info}} = this.props
+    const {people, planets, main: {favorite, imageUrl, hover}, open: {show, name, image, info}} = this.props
     if (people.length === 0 || planets.length === 0) {
       return (
         <div className="noResults">
@@ -75,13 +71,14 @@ class Card extends Component {
       )
     }
     return (
-      <div className="displayCards">
+      <div className="displayCards" style={hover ? this.onMouseOverStyle('1700px') : this.onMouseOverStyle('1600px')}>
         {people.map((person, i) => {
-          const {fields: {name, image, birth_year, homeworld, newImage, isImageUpdated, info}} = person
-          const characterImage = isImageUpdated ? newImage : `${imageUrl}/${image}`
-          const homeWorldName = this.getHomeWorldById(homeworld)
+          const {fields: {name, image, birth_year, homeworld, newImage, isImageUpdated, info}} = person,
+            characterImage = isImageUpdated ? newImage : `${imageUrl}/${image}`
           return (
-            <div className='card' key={i}>
+            <div className='card' key={i}
+                 onMouseEnter={() => this.onMouseOver(true)}
+                 onMouseLeave={() => this.onMouseOver(false)}>
               <div className='card-content'>
                 <div className='card-name text-center'>{name}</div>
                 <img src={characterImage} alt='image url not found'
@@ -93,7 +90,7 @@ class Card extends Component {
                 </p>
                 <p>
                   <span>Homeworld:</span>
-                  {homeWorldName}
+                  <span>{getHomeWorldById(planets, homeworld)}</span>
                 </p>
                 <div className="editButtons">
                   <Link to="/edit">
@@ -102,7 +99,7 @@ class Card extends Component {
                   <button className="btn btn-success" onClick={() => this.addFavorite(person, favorite, planets)}>
                     Favorite
                   </button>
-                  {this.renderRemoveButton(person)}
+                  <RenderRemoveButton onClick={this.onClick} person={person}/>
                 </div>
               </div>
             </div>
@@ -115,8 +112,8 @@ class Card extends Component {
 const mapStateToProps = ({main, paginate, open}) => ({main, paginate, open})
 
 const mapDispatchToProps = dispatch => {
-  const {showEdit, hidePagBar, addFavorite, removeFavorite, removeFavorited, openPopUp} = actions
-  return bindActionCreators({showEdit, hidePagBar, addFavorite, removeFavorite, removeFavorited, openPopUp}, dispatch)
+  const {showEdit, hidePagBar, addFavorite, removeFavorite, removeFavorited, openPopUp, onMouseOver} = actions
+  return bindActionCreators({showEdit, hidePagBar, addFavorite, removeFavorite, removeFavorited, openPopUp, onMouseOver}, dispatch)
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Card))

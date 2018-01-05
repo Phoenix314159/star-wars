@@ -13,5 +13,6 @@ export default {
   REMOVE: 'remove',
   SHOW_FAVORITES: 'show_favorites',
   UPDATE_PERSON: 'update_person',
-  OPEN_POPUP: 'open_popup'
+  OPEN_POPUP: 'open_popup',
+  MOUSE_OVER: 'mouse_over'
 }

@@ -119,6 +119,12 @@ export const openPopUp = (show, index, name, image, info) => (
     payload: {show, index, name, image, info}
   }
 )
+export const onMouseOver = boolean => (
+  {
+    type: types.MOUSE_OVER,
+    payload: {boolean}
+  }
+)
 
 
 

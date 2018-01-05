@@ -4,6 +4,7 @@
 
 $twinkling: 200s linear infinite;
 .total {
+  margin-top: -2vh;
   background-image: -moz-radial-gradient(circle, #FFFFFF .2px, #C0C0C0 .2px, transparent 2.5px),
   -moz-radial-gradient(circle, #FFFFFF .25px, #778899 .25px, transparent 3.75px),
   -moz-radial-gradient(ellipse, #778899 .2px, #D3D3D3 .5px, transparent 2.5px),
@@ -118,11 +119,13 @@ $twinkling: 200s linear infinite;
 
 .content {
   max-width: 1633px;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2vh;
   padding: 20px;
   button {
     position: absolute;
-    top: 26.6vh;
+    top: 24.8vh;
     right: 46.6vw;
   }
 }
@@ -143,7 +146,7 @@ $twinkling: 200s linear infinite;
 
 .favoriteCount {
   position: absolute;
-  top: 20.3vh;
+  top: 18.4vh;
   right: 32.6vw;
   height: 50px;
   width: 50px;
@@ -165,16 +168,11 @@ $twinkling: 200s linear infinite;
   text-align: center;
   margin-top: 20vh;
   color: whitesmoke;
-  .noFavoritesButton {
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 4vh;
-  }
 }
 
 .homeButton {
   position: absolute;
-  top: 26.6vh;
+  top: 24.6vh;
   right: 48.5vw;
 }
 

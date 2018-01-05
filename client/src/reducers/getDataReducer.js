@@ -57,6 +57,10 @@ export default (state = {}, action) => {
       const {payload: {data, planets, newImage}} = action
       return {...state, people: data, planets, newImageUrl: newImage, ok: true}
     }
+    case types.MOUSE_OVER: {
+      const {payload: {boolean}} = action
+      return {...state, hover: boolean}
+    }
     default:
       return state
   }
