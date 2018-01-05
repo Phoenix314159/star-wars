@@ -21,8 +21,7 @@ class SearchBar extends Component {
         <div className='search-bar'>
           <input placeholder='Search Your Destiny'
                  value={term}
-                 onChange={e => this.onInputChange(e.target.value)}
-          />
+                 onChange={e => this.onInputChange(e.target.value)}/>
         </div>
       </div>
     )

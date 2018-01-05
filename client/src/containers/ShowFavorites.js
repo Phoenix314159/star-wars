@@ -13,8 +13,7 @@ const ShowFavorites = ({main: {people, planets}}) => {
   }
   return (
     <Main people={people}
-          planets={planets}
-    />
+          planets={planets}/>
   )
 }
 

@@ -12,8 +12,7 @@ const PagBar = ({handlePageChange, paginate: {page}, search: {totalItems, hide, 
                   itemsCountPerPage={5}
                   totalItemsCount={totalItems}
                   pageRangeDisplayed={pageRangeDisplayed}
-                  onChange={handlePageChange}
-        />
+                  onChange={handlePageChange}/>
       </div>
     </div>
   )

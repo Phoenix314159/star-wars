@@ -19,22 +19,19 @@ export default ({people, planets, name, image, newPersonName, newPersonImage, ne
                    placeholder="enter a new name"
                    value={newPersonName}
                    name="newPersonName"
-                   onChange={handleChange}
-            />
+                   onChange={handleChange}/>
             <input type="text"
                    className="form-control newInputs"
                    name="newPersonImage"
                    placeholder="enter an image url"
                    value={newPersonImage}
-                   onChange={handleChange}
-            />
+                   onChange={handleChange}/>
             <input type="text"
                    className="form-control newInputs"
                    name="newPersonBirthday"
                    placeholder="enter a new birthday"
                    value={newPersonBirthday}
-                   onChange={handleChange}
-            />
+                   onChange={handleChange}/>
             <div className="planetSelect">
               <ChangeHomeWorld className="editPerson" people={people}
                                planets={planets}

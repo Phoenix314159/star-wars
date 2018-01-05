@@ -5,8 +5,7 @@ import Card from '../containers/Card'
 export default ({people, planets, handlePageChange}) => (
   <div>
     <Card people={people}
-          planets={planets}
-    />
+          planets={planets}/>
     <PagBar handlePageChange={handlePageChange}/>
   </div>
 )

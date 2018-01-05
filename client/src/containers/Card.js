@@ -16,8 +16,7 @@ class Card extends Component {
   }
 
   addFavorite = (person, favorite) => {
-    const {history: {location: {pathname}}, addFavorite} = this.props
-    const {isFavorite} = person
+    const {isFavorite} = person, {history: {location: {pathname}}, addFavorite} = this.props
     if (isFavorite || pathname === '/favorites') return
     addFavorite(person, favorite)
   }
@@ -43,35 +42,27 @@ class Card extends Component {
     this.props.onMouseOver(boolean)
   }
 
-  onMouseOverStyle = str => {
-    const {match: {path}} = this.props
-    if(path === '/favorites') return {maxWidth: '1650px'}
-    return {
-      maxWidth: str,
-      transitionDuration: '.9s'
-    }
+  onMouseOverStyle = num => {
+    const {match: {path}} = this.props,
+      {innerWidth} = window,
+      maxWidth = `${num}px`,
+      transition = 'all .4s cubic-bezier(0.445, 0.05, 0.55, 0.95)' // easeInOutSine transition timing function
+    if (path === '/favorites') return {maxWidth: (innerWidth - 320)}
+    return {maxWidth, transition}
   }
 
   render () {
-    const {people, planets, main: {favorite, imageUrl, hover}, open: {show, name, image, info}} = this.props
+    const {people, planets, main: {favorite, imageUrl, hover}, open: {show, name, image, info}} = this.props,
+      {innerWidth} = window
     if (people.length === 0 || planets.length === 0) {
-      return (
-        <div className="noResults">
-          <h1>No Results Found</h1>
-        </div>
-      )
+      return <div className="noResults"><h1>No Results Found</h1></div>
     }
     if (show) {
-      return (
-        <PopUp close={this.closePopUp}
-               image={image}
-               name={name}
-               info={info}
-        />
-      )
+      return <PopUp close={this.closePopUp} image={image} name={name} info={info}/>
     }
     return (
-      <div className="displayCards" style={hover ? this.onMouseOverStyle('1700px') : this.onMouseOverStyle('1600px')}>
+      <div className="displayCards"
+           style={hover ? this.onMouseOverStyle(innerWidth - 220) : this.onMouseOverStyle(innerWidth - 320)}>
         {people.map((person, i) => {
           const {fields: {name, image, birth_year, homeworld, newImage, isImageUpdated, info}} = person,
             characterImage = isImageUpdated ? newImage : `${imageUrl}/${image}`
@@ -82,8 +73,7 @@ class Card extends Component {
               <div className='card-content'>
                 <div className='card-name text-center'>{name}</div>
                 <img src={characterImage} alt='image url not found'
-                     onClick={() => this.openPopUp(i, name, characterImage, info)}
-                />
+                     onClick={() => this.openPopUp(i, name, characterImage, info)}/>
                 <p>
                   <span>Birthday:</span>
                   <span>{birth_year}</span>

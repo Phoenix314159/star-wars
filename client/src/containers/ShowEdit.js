@@ -54,14 +54,12 @@ class ShowEdit extends Component {
           spinner={null}
           handleSubmit={this.handleSubmit}
           selectedPlanet={this.selectedPlanet}
-          handleChange={this.changeInfo}
-        />
+          handleChange={this.changeInfo}/>
       )
     }
     return (
       <Main people={people}
-            planets={planets}
-      />
+            planets={planets}/>
     )
   }
 }
