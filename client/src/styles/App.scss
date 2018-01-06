@@ -183,6 +183,23 @@ $twinkling: 200s linear infinite;
 }
 
 @media (min-width: 1550px) and (max-width: 1919px) {
+  .card {
+    width: 233px;
+    p{
+      span {
+        font-size: .8em;
+      }
+    }
+  }
+  .card-content {
+    img {
+      height: 100px;
+      width: 100px;
+    }
+  }
+  .pagContainer {
+    font-size: 1.2em;
+  }
   .popup_inner {
     .popUpContent {
       .characterInfo {
@@ -202,13 +219,20 @@ $twinkling: 200s linear infinite;
   .pagContainer {
     font-size: 1.2em;
   }
-  .displayCards {
-    max-width: 1470px;
-  }
+
   .card {
-    width: 280px;
-    margin: auto;
-    font-size: 1em;
+    width: 233px;
+    p{
+      span {
+        font-size: .8em;
+      }
+    }
+  }
+  .card-content {
+    img {
+      height: 100px;
+      width: 100px;
+    }
   }
   .popup_inner {
     .popUpContent {
@@ -224,19 +248,26 @@ $twinkling: 200s linear infinite;
     font-size: 1.2em;
     margin-top: 6vh;
   }
-  .displayCards {
-    max-width: 1390px;
-  }
+
   .card {
-    width: 260px;
+    width: 195px;
     margin: auto;
-    font-size: 1em;
+    .card-name {
+      font-size: .7em;
+    }
+    p{
+      span {
+        font-size: .6em;
+      }
+    }
   }
+
   .card-content {
     img {
-      height: 119px;
-      width: 119px;
+      height: 90px;
+      width: 90px;
     }
+
   }
   .popup_inner {
     .popUpContent {
