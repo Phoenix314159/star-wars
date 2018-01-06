@@ -63,8 +63,7 @@ export default (state = {}, action) => {
     }
     case types.SHOW_BUTTON: {
       const {payload: {boolean}} = action
-      console.log(boolean)
-      return {...state, showButton: boolean}
+      return {...state, showButton: boolean, hideButton: true}
     }
     default:
       return state

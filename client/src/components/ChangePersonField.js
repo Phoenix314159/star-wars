@@ -8,7 +8,7 @@ export default ({people, planets, name, image, newPersonName, newPersonImage, ne
   const showSaveButton = ok ? 'pagHide' : 'btn btn-primary'
   const showCancelButton = ok ? 'pagHide' : 'btn btn-danger'
   return (
-    <div className="card" style={{marginTop: '-4vh'}}>
+    <div className="animated fadeIn card" style={{marginTop: '-4vh'}}>
         <div className='card-content'>
           <form onSubmit={handleSubmit}>
             <h4 className="text-center">{name}</h4>
@@ -44,7 +44,7 @@ export default ({people, planets, name, image, newPersonName, newPersonImage, ne
                         onClick={() => showFavoritesButton()}>Cancel</button>
               </Link>
             </div>
-            <div className="okContainer">
+            <div className="animated fadeIn okContainer">
               <Link to="/">
                 <button className={showOkButton}>OK</button>
               </Link>

@@ -8,8 +8,8 @@ import SearchBar from './SearchBar'
 
 const TopSection = ({main: {people, planets, favorite, hideButton, showButton},
                       paginate: {page}, open: {starWarsHide}, showFavorites}) => {
-  const homeButtonStyle = hideButton ? 'pagHide' : 'homeButton',
-    showFavoritesButtonStyle = showButton ? 'btn btn-default' : 'pagHide',
+  const homeButtonStyle = hideButton ? 'animated fadeOut pagHide' : 'animated fadeIn homeButton',
+    showFavoritesButtonStyle = showButton ? 'animated fadeIn btn btn-default' : 'animated fadeOut pagHide',
     starWars = starWarsHide ? 'pagHide' : '',
     showFavoriteCount = favorite === 0 ? '' : favorite
   return (
@@ -17,8 +17,8 @@ const TopSection = ({main: {people, planets, favorite, hideButton, showButton},
       <div className='content'>
         <div className='logo'>
           <div className={starWars}>
-            <img src={starWarsLogo} alt=""/>
-            <div className="favoriteCount">
+            <img className="animated fadeIn" src={starWarsLogo} alt=""/>
+            <div className="animated slideInRight favoriteCount">
               <div>{showFavoriteCount}</div>
             </div>
             <Link to="/favorites">

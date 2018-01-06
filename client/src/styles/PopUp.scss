@@ -31,10 +31,7 @@ $color: whitesmoke;
   background: #121212;
   -webkit-box-shadow: 7px 7px 5px 0px rgba(0, 0, 0, 0.49);
   -moz-box-shadow: 7px 7px 5px 0px rgba(0, 0, 0, 0.49);
-  box-shadow: 7px 7px 5px 0px rgba(0, 0, 0, 0.49);
-  animation-name: boxswitch;
-  animation-duration: 5s;
-  animation-iteration-count: infinite;
+  box-shadow: inset 0 0 7px 7px #3a5161;
 
   &:hover {
     cursor: pointer;
@@ -71,23 +68,6 @@ $color: whitesmoke;
     }
   }
 
-  @keyframes boxswitch {
-    0% {
-      box-shadow: $projectShadow #3f5767;
-    }
-    20% {
-      box-shadow: $projectShadow $color;
-    }
-    40% {
-      box-shadow: $projectShadow #3a5161;
-    }
-    80% {
-      box-shadow: $projectShadow #BCC6CC;
-    }
-    100% {
-      box-shadow: $projectShadow #4C75A3;
-    }
-  }
   .popUpButton {
     position: absolute;
     bottom: 33px;

@@ -61,7 +61,7 @@ class Card extends Component {
       return <PopUp close={this.closePopUp} image={image} name={name} info={info}/>
     }
     return (
-      <div className="displayCards"
+      <div className="animated fadeIn displayCards"
            style={hover ? this.onMouseOverStyle(innerWidth - 220) : this.onMouseOverStyle(innerWidth - 320)}>
         {people.map((person, i) => {
           const {fields: {name, image, birth_year, homeworld, newImage, isImageUpdated, info}} = person,

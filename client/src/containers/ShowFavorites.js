@@ -6,7 +6,7 @@ const ShowFavorites = ({main: {people, planets}}) => {
 
   if (people.length === 0) {
     return (
-      <div className="noFavorites">
+      <div className="animated fadeIn noFavorites">
         <h1>No Favorites</h1>
       </div>
     )
