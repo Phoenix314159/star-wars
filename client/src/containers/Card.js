@@ -47,7 +47,7 @@ class Card extends Component {
       {innerWidth} = window,
       maxWidth = `${num}px`,
       transition = 'all .4s cubic-bezier(0.445, 0.05, 0.55, 0.95)' // easeInOutSine transition timing function
-    if (path === '/favorites') return null
+    if (path === '/favorites') return {maxWidth: innerWidth - 220}
     return {maxWidth, transition}
   }
 
