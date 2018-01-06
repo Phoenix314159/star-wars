@@ -20,20 +20,20 @@ class Main extends Component {
         return (
           <CardBar people={page !== 1 ? subData1 : data.slice(0, 5)}
                    planets={page !== 1 ? subData2 : planetData}
-                   handlePageChange={this.handlePageChange}/>
+                   handlePageChange={this.handlePageChange} />
         )
       }
       return (
         <CardBar people={page !== 1 ? subData1 : people.slice(0, 5)}
                  planets={page !== 1 ? subData2 : planets}
-                 handlePageChange={this.handlePageChange}/>
+                 handlePageChange={this.handlePageChange} />
       )
     }
     const {people, planets} = this.props
     return (
       <CardBar people={page !== 1 ? subData1 : people.slice(0, 5)}
                planets={page !== 1 ? subData2 : planets}
-               handlePageChange={this.handlePageChange}/>
+               handlePageChange={this.handlePageChange} />
     )
   }
 }

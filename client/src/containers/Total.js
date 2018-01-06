@@ -23,12 +23,12 @@ class Total extends Component {
     if (term !== '') {
       return (
         <Main people={page !== 1 ? subData1 : data.slice(0, 5)}
-              planets={page !== 1 ? subData2 : planetData}/>
+              planets={page !== 1 ? subData2 : planetData} />
       )
     }
     return (
       <Main people={page !== 1 ? subData1 : people.slice(0, 5)}
-            planets={page !== 1 ? subData2 : planets}/>
+            planets={page !== 1 ? subData2 : planets} />
     )
   }
 }

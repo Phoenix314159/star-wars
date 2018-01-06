@@ -25,12 +25,12 @@ class App extends Component {
           <div className="total">
             <div className="stars"/>
             <div className="twinkling"/>
-            <TopSection/>
+            <TopSection />
             <Switch>
-              <Route exact path="/edit" component={ShowEdit}/>
-              <Route exact path="/main" component={Main}/>
-              <Route exact path="/favorites" component={ShowFavorites}/>
-              <Route exact path="/" component={Total}/>
+              <Route exact path="/edit" component={ShowEdit} />
+              <Route exact path="/main" component={Main} />
+              <Route exact path="/favorites" component={ShowFavorites} />
+              <Route exact path="/" component={Total} />
             </Switch>
           </div>
         </BrowserRouter>

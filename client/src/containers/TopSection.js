@@ -14,10 +14,10 @@ const TopSection = ({main: {people, planets, favorite, hideButton, showButton},
     showFavoriteCount = favorite === 0 ? '' : favorite
   return (
     <div>
-      <div className='content'>
-        <div className='logo'>
+      <div className="content">
+        <div className="logo">
           <div className={starWars}>
-            <img className="animated fadeIn" src={starWarsLogo} alt=""/>
+            <img className="animated fadeIn" src={starWarsLogo} alt="" />
             <div className="animated slideInRight favoriteCount">
               <div>{showFavoriteCount}</div>
             </div>
@@ -29,7 +29,7 @@ const TopSection = ({main: {people, planets, favorite, hideButton, showButton},
             </Link>
           </div>
         </div>
-        <SearchBar starWarsHide={starWars}/>
+        <SearchBar starWarsHide={starWars} />
       </div>
       <div className={homeButtonStyle}>
         <Link to="/">

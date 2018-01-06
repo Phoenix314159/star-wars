@@ -9,10 +9,10 @@ export default ({people, planets, name, image, newPersonName, newPersonImage, ne
   const showCancelButton = ok ? 'pagHide' : 'btn btn-danger'
   return (
     <div className="animated fadeIn card" style={{marginTop: '-4vh'}}>
-        <div className='card-content'>
+        <div className="card-content">
           <form onSubmit={handleSubmit}>
             <h4 className="text-center">{name}</h4>
-            <img src={isImageUpdated ? newImage : `${imageUrl}/${image}`} alt=''
+            <img src={isImageUpdated ? newImage : `${imageUrl}/${image}`} alt=""
                  style={{height: '80px', width: '80px'}}/>
             <input type="text"
                    className="form-control newInputs"

@@ -67,12 +67,12 @@ class Card extends Component {
           const {fields: {name, image, birth_year, homeworld, newImage, isImageUpdated, info}} = person,
             characterImage = isImageUpdated ? newImage : `${imageUrl}/${image}`
           return (
-            <div className='animated fadeIn card' key={i}
+            <div className="animated fadeIn card" key={i}
                  onMouseEnter={() => this.onMouseOver(true)}
                  onMouseLeave={() => this.onMouseOver(false)}>
-              <div className='card-content'>
-                <div className='card-name text-center'>{name}</div>
-                <img src={characterImage} alt=''
+              <div className="card-content">
+                <div className="card-name text-center">{name}</div>
+                <img src={characterImage} alt=""
                      onClick={() => this.openPopUp(i, name, characterImage, info)}/>
                 <p>
                   <span>Birthday:</span>
@@ -89,7 +89,7 @@ class Card extends Component {
                   <button className="btn btn-success" onClick={() => this.addFavorite(person, favorite, planets)}>
                     Favorite
                   </button>
-                  <RenderRemoveButton onClick={this.onClick} person={person}/>
+                  <RenderRemoveButton onClick={this.onClick} person={person} />
                 </div>
               </div>
             </div>

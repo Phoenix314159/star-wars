@@ -18,8 +18,8 @@ class SearchBar extends Component {
     const {search: {term}, starWarsHide} = this.props
     return (
       <div className={starWarsHide}>
-        <div className='animated fadeIn search-bar'>
-          <input placeholder='Search Your Destiny'
+        <div className="animated fadeIn search-bar">
+          <input placeholder="Search Your Destiny"
                  value={term}
                  onChange={e => this.onInputChange(e.target.value)}/>
         </div>
