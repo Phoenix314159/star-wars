@@ -61,13 +61,13 @@ class Card extends Component {
       return <PopUp close={this.closePopUp} image={image} name={name} info={info}/>
     }
     return (
-      <div className="animated fadeIn displayCards"
+      <div className="displayCards"
            style={hover ? this.onMouseOverStyle(innerWidth - 220) : this.onMouseOverStyle(innerWidth - 320)}>
         {people.map((person, i) => {
           const {fields: {name, image, birth_year, homeworld, newImage, isImageUpdated, info}} = person,
             characterImage = isImageUpdated ? newImage : `${imageUrl}/${image}`
           return (
-            <div className='card' key={i}
+            <div className='animated fadeIn card' key={i}
                  onMouseEnter={() => this.onMouseOver(true)}
                  onMouseLeave={() => this.onMouseOver(false)}>
               <div className='card-content'>
