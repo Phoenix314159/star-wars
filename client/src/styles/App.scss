@@ -221,7 +221,7 @@ $twinkling: 200s linear infinite;
   }
 
   .card {
-    width: 233px;
+    width: 218px;
     p{
       span {
         font-size: .8em;
@@ -240,6 +240,11 @@ $twinkling: 200s linear infinite;
         font-size: 1.2em;
       }
     }
+    .popUpButton {
+      position: absolute;
+      bottom: 37px;
+      right: 47%;
+    }
   }
 }
 
@@ -250,14 +255,14 @@ $twinkling: 200s linear infinite;
   }
 
   .card {
-    width: 195px;
+    width: 200px;
     margin: auto;
     .card-name {
-      font-size: .7em;
+      font-size: .5em;
     }
     p{
       span {
-        font-size: .6em;
+        font-size: .4em;
       }
     }
   }
@@ -267,7 +272,12 @@ $twinkling: 200s linear infinite;
       height: 90px;
       width: 90px;
     }
-
+    .editButtons {
+      button {
+        font-size: 10px;
+        padding: 3px 8px;
+      }
+    }
   }
   .popup_inner {
     .popUpContent {
@@ -276,6 +286,7 @@ $twinkling: 200s linear infinite;
       }
     }
   }
+
 }
 
 @media (min-width: 425px) and (max-width: 1260px) {
